@@ -16,6 +16,7 @@ import CreateDelivery from "./Pages/Delivery/CreateDelivery";
 import DeliveryList from "./Pages/Delivery/DeliveryList";
 import UpdateDelivery from "./Pages/Delivery/UpdateDelivery";
 import DoctorList from "./Pages/Doctor/DoctorList";
+import CreateDoctor from "./Pages/Doctor/CreateDoctor";
 
 function App() {
   return (
@@ -52,8 +53,8 @@ function App() {
           <Route path="/updateItem">
             <UpdateItems />
           </Route>
-          <Route path="/createOrder">
-            <CreateOrder />
+          <Route path="/createDoctor">
+            <CreateDoctor />
           </Route>
           <Route path="/updateOrder">
             <UpdateOrder />

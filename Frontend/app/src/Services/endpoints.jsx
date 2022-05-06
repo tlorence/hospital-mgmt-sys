@@ -1,7 +1,16 @@
 // import { baseURL } from "."
 
 //Base URL
-export const baseURL = "http://localhost:9091/";
+export const baseURL = "http://localhost:9900/";
+
+
+//Oder APIs
+export const doctorControllerURL = baseURL + "doctor/";
+export const doctorURL = doctorControllerURL + "getAll";
+// export const adddoctorURL = doctorControllerURL + "adddoctor";
+// export const deletedoctorURL = doctorControllerURL + "deletedoctorById/";
+// export const getdoctorURLbyID = doctorControllerURL + "getdoctorById/";
+// export const updatedoctorURL = doctorControllerURL + "updatedoctorDetails";
 
 //Oder APIs
 export const orderControllerURL = baseURL + "orders/";

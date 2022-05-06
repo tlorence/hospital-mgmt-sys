@@ -6,7 +6,7 @@ import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { orderURL } from "../../Services/endpoints";
+import { doctorURL } from "../../Services/endpoints";
 import { Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 import { deleteOrderURL } from "../../Services/endpoints";
@@ -22,7 +22,7 @@ export default class DoctorList extends Component {
   };
 
   async componentDidMount() {
-    await axios.get(orderURL).then((result) => {
+    await axios.get(doctorURL).then((result) => {
       this.setState({
         doctors: result.data,
       });
@@ -37,7 +37,7 @@ export default class DoctorList extends Component {
 
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to="/createOrder" />;
+      return <Redirect to="/createDoctor" />;
     }
   };
 
@@ -94,7 +94,7 @@ export default class DoctorList extends Component {
               className="Order-Button-Add"
               onClick={this.setRedirect}
             >
-              <FontAwesomeIcon icon={faPlus} /> Add Order
+              <FontAwesomeIcon icon={faPlus} /> Add Doctor
             </button>
           </div>
           <div className="row">
@@ -103,9 +103,9 @@ export default class DoctorList extends Component {
                 <th className="ps-4">Doctor ID</th>
                 <th className="ps-4">Doctor Name</th>
                 <th className="ps-4">Specialization</th>
-                <th className="ps-4">Quantity</th>
                 <th className="ps-4">Mobile</th>
-                <th className="ps-4">ocation</th>
+                <th className="ps-4">Location</th>
+                <th className="ps-4"></th>
                 
               </tr>
 
