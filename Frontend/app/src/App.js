@@ -2,19 +2,19 @@ import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import "./App.css";
 import AdminDashboard from "./Pages/AdminDashboard/AdminDashboard";
 import OrderList from "./Pages/OrderList/OrderList";
-import DriverCreate from "./Pages/Driver/DriverCreate";
-import DriverUpdate from "./Pages/Driver/DriverUpdate";
+import AmbulanceCreate from "./Pages/Ambulance/AmbulanceCreate";
+import AmbulanceUpdate from "./Pages/Ambulance/AmbulanceUpdate";
 import AddUser from "./Pages/User/AddUser";
-import DriverList from "./Pages/Driver/DriverList";
-import CreateItem from "./Pages/Inventory/CreateItem";
+import AmbulanceList from "./Pages/Ambulance/AmbulanceList";
+import CreatePatient from "./Pages/Patient/CreatePatient";
 import UserLogin from "./Pages/User/UserLogin";
-import InventoryList from "./Pages/Inventory/InventoryList";
-import UpdateItems from "./Pages/Inventory/UpdateItems";
+import PatientList from "./Pages/Patient/PatientList";
+import UpdatePatient from "./Pages/Patient/UpdatePatient";
 import CreateOrder from "./Pages/OrderList/CreateOrder";
 import UpdateOrder from "./Pages/OrderList/UpdateOrder";
-import CreateDelivery from "./Pages/Delivery/CreateDelivery";
-import DeliveryList from "./Pages/Delivery/DeliveryList";
-import UpdateDelivery from "./Pages/Delivery/UpdateDelivery";
+import CreateAppointment from "./Pages/Appointment/CreateAppointment";
+import AppointmentList from "./Pages/Appointment/AppointmentList";
+import UpdateAppointment from "./Pages/Appointment/UpdateAppointment";
 import DoctorList from "./Pages/Doctor/DoctorList";
 import CreateDoctor from "./Pages/Doctor/CreateDoctor";
 
@@ -32,26 +32,26 @@ function App() {
           <Route path="/dashboard">
             <AdminDashboard />
           </Route>
-          <Route path="/createDriver">
-            <DriverCreate />
+          <Route path="/createAmbulance">
+            <AmbulanceCreate />
           </Route>
-          <Route path="/updateDriver">
-            <DriverUpdate />
+          <Route path="/updateAmbulance">
+            <AmbulanceUpdate />
           </Route>
-          <Route path="/driverList">
-            <DriverList />
+          <Route path="/ambulanceList">
+            <AmbulanceList />
           </Route>
           <Route path="/addUser">
             <AddUser />
           </Route>
-          <Route path="/createItem">
-            <CreateItem />
+          <Route path="/createPatient">
+            <CreatePatient />
           </Route>
-          <Route path="/inventoryList">
-            <InventoryList />
+          <Route path="/patientList">
+            <PatientList />
           </Route>
-          <Route path="/updateItem">
-            <UpdateItems />
+          <Route path="/updatePatient">
+            <UpdatePatient />
           </Route>
           <Route path="/createDoctor">
             <CreateDoctor />
@@ -59,14 +59,14 @@ function App() {
           <Route path="/updateOrder">
             <UpdateOrder />
           </Route>
-          <Route path="/createDelivery">
-            <CreateDelivery />
+          <Route path="/createAppointment">
+            <CreateAppointment />
           </Route>
-          <Route path="/deliveryList">
-            <DeliveryList />
+          <Route path="/appointmentList">
+            <AppointmentList />
           </Route>
-          <Route path="/updateDelivery">
-            <UpdateDelivery />
+          <Route path="/updateAppointment">
+            <UpdateAppointment />
           </Route>
         </Switch>
       </BrowserRouter>

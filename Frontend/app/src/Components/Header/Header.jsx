@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.css";
-import DriverList from "../../Pages/Driver/DriverList";
+import DriverList from "../../Pages/Ambulance/AmbulanceList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 

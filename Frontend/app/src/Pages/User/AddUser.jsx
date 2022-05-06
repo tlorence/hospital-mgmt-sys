@@ -103,36 +103,6 @@ export default class AddUser extends Component {
                 </div>
               </div>
               <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Address :</label>
-                <div className="col-sm-9">
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="address"
-                    name="address"
-                    placeholder="110/C, Town Hall, Colombo"
-                    required
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-              <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">User Type :</label>
-                <div className="col-sm-9">
-                  <select
-                    className="form-control"
-                    name="userType"
-                    value={this.state.userType}
-                    onChange={this.handleChange}
-                  >
-                    <option hidden>-Select-</option>
-                    <option value="1">Manager</option>
-                    <option value="2">Cashier</option>
-                    <option value="3">Accountant </option>
-                  </select>
-                </div>
-              </div>
-              <div className="mb-3 row">
                 <label className="col-sm-3 col-form-label">Email :</label>
                 <div className="col-sm-9">
                   <input

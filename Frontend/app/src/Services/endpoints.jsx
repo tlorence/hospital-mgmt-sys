@@ -29,6 +29,8 @@ export const getDriverURLbyId = driverControllerURL + "getDriverById/";
 export const updateDriverURL = driverControllerURL + "updateDrivers";
 
 //Inventory APIs
+export const patientControllerURL = baseURL + "patient/";
+export const patientURL = patientControllerURL + "getAll";
 export const inventoryControllerURL = baseURL + "inventory/";
 export const inventoryURL = inventoryControllerURL + "allInventory";
 export const addinventoryURL = inventoryControllerURL + "addItem";

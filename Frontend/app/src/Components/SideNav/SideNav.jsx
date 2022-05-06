@@ -64,7 +64,7 @@ export default function SideNav() {
           </li>
           <li>
             <NavLink
-              to="/inventoryList"
+              to="/patientList"
               activeClassName="active"
               className="nav-link mt-2 mb-2 text-white"
             >
@@ -78,7 +78,7 @@ export default function SideNav() {
           </li>
           <li>
             <NavLink
-              to="/deliveryList"
+              to="/appointmentList"
               activeClassName="active"
               className="nav-link mt-2 mb-2 text-white"
             >
@@ -92,7 +92,7 @@ export default function SideNav() {
           </li>
           <li>
             <NavLink
-              to="/driverList"
+              to="/ambulanceList"
               activeClassName="active"
               className="nav-link mt-2 mb-2 text-white"
             >
@@ -106,7 +106,7 @@ export default function SideNav() {
           </li>
           <li>
             <NavLink
-              to="/driverList"
+              to="/orderList"
               activeClassName="active"
               className="nav-link mt-2 mb-2 text-white"
             >
