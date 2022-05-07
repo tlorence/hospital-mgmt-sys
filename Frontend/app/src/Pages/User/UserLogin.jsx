@@ -50,7 +50,7 @@ export default class UserLogin extends Component {
           <img src={imagePath + `logo.png`} alt="" className="logo-login" />
         </div>
         <div className="User-Login-Heading-Container">
-          <h3 className="Login-User-Heading">Admin Login</h3>
+          <h3 className="Login-User-Heading">User Login</h3>
         </div>
         <div className="User-Login-Body-Container">
           <form onSubmit={this.handleSubmit}>
