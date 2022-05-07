@@ -17,6 +17,10 @@ import AppointmentList from "./Pages/Appointment/AppointmentList";
 import UpdateAppointment from "./Pages/Appointment/UpdateAppointment";
 import DoctorList from "./Pages/Doctor/DoctorList";
 import CreateDoctor from "./Pages/Doctor/CreateDoctor";
+import RoomList from "./Pages/Room/RoomList";
+import CreateRoom from "./Pages/Room/CreateRoom";
+import AttendantList from "./Pages/Attendant/AttendantList";
+import CreateAttendant from "./Pages/Attendant/CreateAttendant";
 
 function App() {
   return (
@@ -67,6 +71,18 @@ function App() {
           </Route>
           <Route path="/updateAppointment">
             <UpdateAppointment />
+          </Route>
+          <Route path="/roomList">
+            <RoomList />
+          </Route>
+          <Route path="/createRoom">
+            <CreateRoom />
+          </Route>
+          <Route path="/attendantList">
+            <AttendantList />
+          </Route>
+          <Route path="/createAttendant">
+            <CreateAttendant />
           </Route>
         </Switch>
       </BrowserRouter>

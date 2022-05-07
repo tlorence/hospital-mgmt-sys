@@ -106,7 +106,7 @@ export default function SideNav() {
           </li>
           <li>
             <NavLink
-              to="/orderList"
+              to="/roomList"
               activeClassName="active"
               className="nav-link mt-2 mb-2 text-white"
             >
@@ -120,7 +120,7 @@ export default function SideNav() {
           </li>
           <li>
             <NavLink
-              to="/driverList"
+              to="/attendantList"
               activeClassName="active"
               className="nav-link mt-2 mb-2 text-white"
             >
