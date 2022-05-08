@@ -102,7 +102,7 @@ export default class PatientList extends Component {
             </button> */}
           </div>
           <div className="Item-Create-Heading-Container">
-              <h3 className="Add-Item-Heading">My Patient</h3>
+              <h3 className="Add-Item-Heading">My Profile</h3>
             </div>
             <div className="Item-Create-Body-Container">
               <form onSubmit={this.handleSubmit}>

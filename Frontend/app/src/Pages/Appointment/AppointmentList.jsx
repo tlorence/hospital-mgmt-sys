@@ -10,70 +10,68 @@ import {
 import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
-import { deleteDeliveryURL, deliveryURL } from "../../Services/endpoints";
+import { appointmentURL } from "../../Services/endpoints";
 import { Redirect } from "react-router";
 import Swal from "sweetalert2";
-import generatePDF from "./DeliverReportGenaration";
+// import generatePDF from "./DeliverReportGenaration";
 import { Link } from "react-router-dom";
 
 export default class AppointmentList extends Component {
   state = {
-    deliveryNo: 0,
-    orderNo: "",
-    description: "",
-    address: "",
-    customerName: "",
-    customerPhoneNumber: "",
-    status: 0,
-    deliveries: [],
+    appointmentId: "",
+    patientId: "",
+    startTime: "",
+    endTimel: "",
+    appointments: [],
+    redirect: false
   };
 
   async componentDidMount() {
-    await axios.get(deliveryURL).then((result) => {
+    await axios.get(appointmentURL).then((result) => {
       this.setState({
-        deliveries: result.data,
+        appointments: result.data,
       });
     });
   }
 
-  delete(deliveryNo) {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger",
-      },
-      buttonsStyling: false,
-    });
+  // delete(deliveryNo) {
+  //   const swalWithBootstrapButtons = Swal.mixin({
+  //     customClass: {
+  //       confirmButton: "btn btn-success",
+  //       cancelButton: "btn btn-danger",
+  //     },
+  //     buttonsStyling: false,
+  //   });
 
-    swalWithBootstrapButtons
-      .fire({
-        title: "Are you want to delete " + deliveryNo + " delivery?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel!",
-        reverseButtons: true,
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          swalWithBootstrapButtons.fire(
-            "Deleted!",
-            "Your delivery " + deliveryNo + " has been deleted.",
-            "success"
-          );
-          axios.delete(deleteDeliveryURL + deliveryNo).then(() => {
-            this.componentDidMount();
-          });
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          swalWithBootstrapButtons.fire(
-            "Cancelled",
-            "Your " + deliveryNo + " delivery record is safe :)",
-            "error"
-          );
-        }
-      });
-  }
+  //   swalWithBootstrapButtons
+  //     .fire({
+  //       title: "Are you want to delete " + deliveryNo + " delivery?",
+  //       text: "You won't be able to revert this!",
+  //       icon: "warning",
+  //       showCancelButton: true,
+  //       confirmButtonText: "Yes, delete it!",
+  //       cancelButtonText: "No, cancel!",
+  //       reverseButtons: true,
+  //     })
+  //     .then((result) => {
+  //       if (result.isConfirmed) {
+  //         swalWithBootstrapButtons.fire(
+  //           "Deleted!",
+  //           "Your delivery " + deliveryNo + " has been deleted.",
+  //           "success"
+  //         );
+  //         axios.delete(deleteDeliveryURL + deliveryNo).then(() => {
+  //           this.componentDidMount();
+  //         });
+  //       } else if (result.dismiss === Swal.DismissReason.cancel) {
+  //         swalWithBootstrapButtons.fire(
+  //           "Cancelled",
+  //           "Your " + deliveryNo + " delivery record is safe :)",
+  //           "error"
+  //         );
+  //       }
+  //     });
+  // }
   setRedirect = () => {
     this.setState({
       redirect: true,
@@ -87,7 +85,7 @@ export default class AppointmentList extends Component {
   };
 
   render() {
-    const { deliveries } = this.state;
+    const { appointments } = this.state;
     return (
       <div>
         <SideNav />
@@ -109,36 +107,40 @@ export default class AppointmentList extends Component {
                 <th className="ps-4">Appointment ID No</th>
                 <th className="ps-4">patient ID</th>
                 <th className="ps-4">Start Time</th>
+                <th className="ps-"></th>
                 <th className="ps-4">End Time</th>
+                
                 <th className="ps-4"></th>
               </tr>
-              {deliveries.map((delivery) => {
+              {appointments.map((appointment) => {
                 return (
                   <tr
-                    key={delivery.orderNo}
+                    key={appointment.appointmentId}
                     className="DeliveryListItems text-white"
                   >
-                    <td className="ps-4">{delivery.orderNo}</td>
-                    <td className="ps-4">{delivery.description}</td>
-                    <td className="ps-4">{delivery.address}</td>
-                    <td className="ps-4">{delivery.customerName}</td>
-                    <td className="ps-4">{delivery.customerPhoneNumber}</td>
-                    <td className="ps-4">
-                      {delivery.status ? "Completed" : "Pending"}
-                    </td>
+                    <td className="ps-4">{appointment.appointmentId}</td>
+                    <td className="ps-4">{appointment.patientId}</td>
+                    <td className="ps-4">{appointment.startTime}</td>
+                    <td className="ps-4"></td>
+                    <td className="ps-4">{appointment.endTimel}</td>
+                    
+                    {/* <td className="ps-4">{delivery.customerPhoneNumber}</td> */}
+                    {/* <td className="ps-4">
+                      {appointment.status ? "Completed" : "Pending"}
+                    </td> */}
                     <td className="ps-4">
                       <FontAwesomeIcon
                         size="2x"
                         icon={faEdit}
                         onClick={() => {
-                          localStorage.setItem("updateId", delivery.deliveryNo);
-                          window.location = "/updateDelivery";
+                          localStorage.setItem("appointmentId", appointment.appointmentId);
+                          window.location = "/updateAppointment";
                         }}
                       />
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}
-                        onClick={(e) => this.delete(delivery.deliveryNo)}
+                        onClick={(e) => this.delete(appointment.appointmentId)}
                       />
                     </td>
                   </tr>

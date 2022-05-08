@@ -25,6 +25,8 @@ export const getOrderURLbyID = orderControllerURL + "getOrderById/";
 export const updateOrderURL = orderControllerURL + "updateOrderDetails";
 
 //Driver APIs
+export const appointmentController = baseURL + "appointment/"
+export const appointmentURL = appointmentController + "getAll";
 export const driverControllerURL = baseURL + "driver/";
 export const driverURL = driverControllerURL + "allDrivers";
 export const addDriverURL = driverControllerURL + "addDriver";

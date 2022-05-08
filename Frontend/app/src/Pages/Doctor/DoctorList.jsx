@@ -122,8 +122,8 @@ export default class DoctorList extends Component {
                         size="2x"
                         icon={faEdit}
                         onClick={() => {
-                          localStorage.setItem("updateId", doctor.orderId);
-                          window.location = "/updateOrder";
+                          localStorage.setItem("updateId", doctor.doctorId);
+                          window.location = "/updateDoctor";
                         }}
                       />
                       <FontAwesomeIcon
