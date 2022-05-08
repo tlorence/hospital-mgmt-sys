@@ -6,7 +6,7 @@ import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { deleteInventoryURL, inventoryURL } from "../../Services/endpoints";
+import { patientURL } from "../../Services/endpoints";
 import { Redirect, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import generatePDFItems from "./InventoryReport";
@@ -15,63 +15,62 @@ export default class PatientList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemNo: "",
-      itemCategory: "",
-      description: "",
-      unitPrice: 0,
-      inventoryNo: "",
-      quantity: 0,
-      items: [],
+      nic: "",
+      firstName: "",
+      lastName: "",
+      email: 0,
+      address: "",
+      patients: [],
       redirect: false,
     };
   }
 
   async componentDidMount() {
-    await axios.get(inventoryURL).then((result) => {
+    await axios.get(patientURL).then((result) => {
       this.setState({
-        items: result.data,
+        patients: result.data,
       });
     });
   }
 
-  delete(inventoryNo) {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger",
-      },
-      buttonsStyling: false,
-    });
+  // delete(nic) {
+  //   const swalWithBootstrapButtons = Swal.mixin({
+  //     customClass: {
+  //       confirmButton: "btn btn-success",
+  //       cancelButton: "btn btn-danger",
+  //     },
+  //     buttonsStyling: false,
+  //   });
 
-    swalWithBootstrapButtons
-      .fire({
-        title: "Are you want to delete " + inventoryNo + " item?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel!",
-        reverseButtons: true,
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          swalWithBootstrapButtons.fire(
-            "Deleted!",
-            "Your item " + inventoryNo + " has been deleted.",
-            "success"
-          );
-          axios.delete(deleteInventoryURL + inventoryNo).then(() => {
-            this.componentDidMount();
-          });
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          swalWithBootstrapButtons.fire(
-            "Cancelled",
-            "Your " + inventoryNo + " ineventory record is safe :)",
-            "error"
-          );
-        }
-      });
-  }
+  //   swalWithBootstrapButtons
+  //     .fire({
+  //       title: "Are you want to delete " + nic + " item?",
+  //       text: "You won't be able to revert this!",
+  //       icon: "warning",
+  //       showCancelButton: true,
+  //       confirmButtonText: "Yes, delete it!",
+  //       cancelButtonText: "No, cancel!",
+  //       reverseButtons: true,
+  //     })
+  //     .then((result) => {
+  //       if (result.isConfirmed) {
+  //         swalWithBootstrapButtons.fire(
+  //           "Deleted!",
+  //           "Your item " + nic + " has been deleted.",
+  //           "success"
+  //         );
+  //         axios.delete(deleteInventoryURL + inventoryNo).then(() => {
+  //           this.componentDidMount();
+  //         });
+  //       } else if (result.dismiss === Swal.DismissReason.cancel) {
+  //         swalWithBootstrapButtons.fire(
+  //           "Cancelled",
+  //           "Your " + inventoryNo + " ineventory record is safe :)",
+  //           "error"
+  //         );
+  //       }
+  //     });
+  // }
 
   setRedirect = () => {
     this.setState({
@@ -85,7 +84,7 @@ export default class PatientList extends Component {
     }
   };
   render() {
-    const { items } = this.state;
+    const { patients } = this.state;
     return (
       <div>
         <SideNav />
@@ -93,110 +92,15 @@ export default class PatientList extends Component {
           <SearchHeader topic="Patient Management" />
           <div className="ItemRow text-end">
             {this.renderRedirect()}
-            {/* <button
+            <button
               type="submit"
               className="Item-Button-Add"
               onClick={this.setRedirect}
             >
               <FontAwesomeIcon icon={faPlus} /> Add Patient
-            </button> */}
+            </button>
           </div>
-          <div className="Item-Create-Heading-Container">
-              <h3 className="Add-Item-Heading">My Profile</h3>
-            </div>
-            <div className="Item-Create-Body-Container">
-              <form onSubmit={this.handleSubmit}>
-                <div className="mb-3 row">
-                  <label className="col-sm-3 col-form-label">NIC :</label>
-                  <div className="col-sm-9">
-                    <input
-                      className="form-control"
-                      readOnly
-                      type="text"
-                      id="nic"
-                      name="itemNo"
-                      pattern="[A-Z,0-9]{6}"
-                      placeholder="ITM000"
-                      required
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                </div>
-                <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">First Name :</label>
-                <div className="col-sm-9">
-                  <input
-                    className="form-control"
-                    readOnly
-                    type="text"
-                    id="firstName"
-                    name="name"
-                    placeholder="John Doe"
-                    required
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-              <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Last Name :</label>
-                <div className="col-sm-9">
-                  <input
-                    className="form-control"
-                    readOnly
-                    type="text"
-                    id="lastName"
-                    name="name"
-                    placeholder="John Doe"
-                    required
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-                <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Email :</label>
-                <div className="col-sm-9">
-                  <input
-                    className="form-control"
-                    readOnly
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="abc@abc.com"
-                    required
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-              <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Address :</label>
-                <div className="col-sm-9">
-                  <input
-                    className="form-control"
-                    readOnly
-                    type="address"
-                    id="address"
-                    name="address"
-                    placeholder="12/3 1st st"
-                    required
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-                <div className="ItemRow text-end">
-                  {/* <button
-                    type="reset"
-                    className="Item-Button-Inventory-Reset"
-                    onClick={this.reset}
-                  >
-                    <FontAwesomeIcon icon={faRedo} /> Reset
-                  </button>
-                  <button type="submit" className="Item-Button-Inventory-Add">
-                    <FontAwesomeIcon icon={faPlus} /> Add Patient
-                  </button> */}
-                </div>
-              </form>
-            </div>
-          {/* <div className="row">
+          <div className="row">
             <table className="table table-bordered  Inventory" id="myTable">
               <tr className="InventoryListItems">
                 <th className="ps-4">NIC</th>
@@ -206,31 +110,31 @@ export default class PatientList extends Component {
                 <th className="ps-4">Address</th>
                 <th className="ps-4"></th>
               </tr>
-              {items.map((item) => {
+              {patients.map((patient) => {
                 return (
                   <tr
-                    key={item.itemNo}
+                    key={patient.nic}
                     className="InventoryListItems text-white"
                   >
-                    <td className="ps-4">{item.inventoryNo}</td>
-                    <td className="ps-4">{item.itemNo}</td>
-                    <td className="ps-4">{item.description}</td>
-                    <td className="ps-4">{item.itemCategory}</td>
-                    <td className="ps-4">{item.unitPrice}</td>
-                    <td className="ps-4">{item.quantity}</td>
+                    <td className="ps-4">{patient.nic}</td>
+                    <td className="ps-4">{patient.firstName}</td>
+                    <td className="ps-4">{patient.lastName}</td>
+                    <td className="ps-4">{patient.email}</td>
+                    <td className="ps-4">{patient.address}</td>
+                    {/* <td className="ps-4">{item.quantity}</td> */}
                     <td className="ps-4">
                       <FontAwesomeIcon
                         size="2x"
                         icon={faEdit}
                         onClick={() => {
-                          localStorage.setItem("updateId", item.inventoryNo);
-                          window.location = "/updateItem";
+                          localStorage.setItem("nic", patient.nic);
+                          window.location = "/updatePatient";
                         }}
                       />
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}
-                        onClick={(e) => this.delete(item.inventoryNo)}
+                        onClick={(e) => this.delete(patient.nic)}
                       />
                     </td>
                   </tr>
@@ -238,7 +142,6 @@ export default class PatientList extends Component {
               })}
             </table>
           </div>
-        </div> */}
         </div>
       </div>
     );

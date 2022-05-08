@@ -89,13 +89,13 @@ export default class DoctorList extends Component {
           <SearchHeader topic="Doctor Management" />
           <div className="OrderRow text-end">
             {this.renderRedirect()}
-            {/* <button
+            <button
               type="submit"
               className="Order-Button-Add"
               onClick={this.setRedirect}
             >
               <FontAwesomeIcon icon={faPlus} /> Add Doctor
-            </button> */}
+            </button>
           </div>
           <div className="row">
             <table class="table table-bordered  order" id="myTable">

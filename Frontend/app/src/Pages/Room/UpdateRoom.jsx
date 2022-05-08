@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./CreateAttendant.css";
-import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
+import "./CreateRoom.css";
+import { faRedo, faPlus, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
@@ -8,7 +8,7 @@ import axios from "axios";
 import { addinventoryURL } from "../../Services/endpoints";
 import Swal from "sweetalert2";
 
-export default class CreateAttendant extends Component {
+export default class UpdateRoom extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,15 +59,15 @@ export default class CreateAttendant extends Component {
       <div>
         <SideNav />
         <div className="content-layer">
-          <Header topic="Attendant Management" />
+          <Header topic="Room Management" />
           <div className="CreateItem">
             <div className="Item-Create-Heading-Container">
-              <h3 className="Add-Item-Heading">Add Attendant</h3>
+              <h3 className="Add-Item-Heading">Update Room</h3>
             </div>
             <div className="Item-Create-Body-Container">
               <form onSubmit={this.handleSubmit}>
                 <div className="mb-3 row">
-                  <label className="col-sm-3 col-form-label">Attendant Id :</label>
+                  <label className="col-sm-3 col-form-label">Room no :</label>
                   <div className="col-sm-9">
                     <input
                       className="form-control"
@@ -75,79 +75,62 @@ export default class CreateAttendant extends Component {
                       id="nic"
                       name="itemNo"
                       pattern="[A-Z,0-9]{6}"
-                      placeholder="A01"
+                      placeholder="Room No"
                       required
                       onChange={this.handleChange}
                     />
                   </div>
                 </div>
                 <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Firstname :</label>
+                <label className="col-sm-3 col-form-label">Type :</label>
                 <div className="col-sm-9">
                   <input
                     className="form-control"
                     type="text"
                     id="firstName"
                     name="name"
-                    placeholder="First Name"
+                    placeholder="Type"
                     required
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
               <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Lastname :</label>
+                <label className="col-sm-3 col-form-label">Availability :</label>
                 <div className="col-sm-9">
                   <input
                     className="form-control"
                     type="text"
                     id="lastName"
                     name="name"
-                    placeholder="Last Name"
+                    placeholder="Availability"
                     required
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
                 <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Working Ward :</label>
+                <label className="col-sm-3 col-form-label">Price :</label>
                 <div className="col-sm-9">
                   <input
                     className="form-control"
-                    type="text"
+                    type="number"
                     id="email"
                     name="email"
-                    placeholder="Working Ward"
-                    required
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-              <div className="mb-3 row">
-                <label className="col-sm-3 col-form-label">Contact No :</label>
-                <div className="col-sm-9">
-                  <input
-                    className="form-control"
-                    type="text"
-                    id="address"
-                    name="address"
-                    placeholder="Contact No"
+                    placeholder="price"
                     required
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
                 <div className="ItemRow text-end">
-                  <button
-                    type="reset"
-                    className="Item-Button-Inventory-Reset"
-                    onClick={this.reset}
-                  >
-                    <FontAwesomeIcon icon={faRedo} /> Reset
-                  </button>
-                  <button type="submit" className="Item-Button-Inventory-Add">
-                    <FontAwesomeIcon icon={faPlus} /> Add Attendant
-                  </button>
+                <button
+                  type="submit"
+                  className="Item-Button-Update"
+                  onClick={{}}
+                >
+                  <FontAwesomeIcon icon={faCheckCircle} /> Update Room
+                </button>
                 </div>
               </form>
             </div>

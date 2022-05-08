@@ -75,7 +75,7 @@ export default class CreateRoom extends Component {
                       id="nic"
                       name="itemNo"
                       pattern="[A-Z,0-9]{6}"
-                      placeholder="ITM000"
+                      placeholder="Room No"
                       required
                       onChange={this.handleChange}
                     />
@@ -89,7 +89,7 @@ export default class CreateRoom extends Component {
                     type="text"
                     id="firstName"
                     name="name"
-                    placeholder="John Doe"
+                    placeholder="Type"
                     required
                     onChange={this.handleChange}
                   />
@@ -103,7 +103,7 @@ export default class CreateRoom extends Component {
                     type="text"
                     id="lastName"
                     name="name"
-                    placeholder="John Doe"
+                    placeholder="Availability"
                     required
                     onChange={this.handleChange}
                   />
@@ -114,10 +114,10 @@ export default class CreateRoom extends Component {
                 <div className="col-sm-9">
                   <input
                     className="form-control"
-                    type="email"
+                    type="number"
                     id="email"
                     name="email"
-                    placeholder="abc@abc.com"
+                    placeholder="price"
                     required
                     onChange={this.handleChange}
                   />

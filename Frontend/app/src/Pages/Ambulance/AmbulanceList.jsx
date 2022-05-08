@@ -10,27 +10,25 @@ import {
 import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
-import { deleteDriverURL, driverURL } from "../../Services/endpoints";
+import { ambulanceURL } from "../../Services/endpoints";
 import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
 import generatePDFDriver from "./DriverReport";
 
 export default class AmbulanceList extends Component {
   state = {
-    licenceNo: "",
-    name: "",
-    address: "",
     vehicleNo: "",
+    vehicleOwnerName: "",
+    availableLocation: "",
     vehicleType: "",
-    phoneNo: "",
-    drivers: [],
+    ambulances: [],
     redirect: false,
   };
 
   async componentDidMount() {
-    const drivers = await axios.get(driverURL).then((result) => {
+    await axios.get(ambulanceURL).then((result) => {
       this.setState({
-        drivers: result.data,
+        ambulances: result.data,
       });
     });
   }
@@ -47,47 +45,47 @@ export default class AmbulanceList extends Component {
     }
   };
 
-  delete(licenceNo) {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger",
-      },
-      buttonsStyling: false,
-    });
+  // delete(licenceNo) {
+  //   const swalWithBootstrapButtons = Swal.mixin({
+  //     customClass: {
+  //       confirmButton: "btn btn-success",
+  //       cancelButton: "btn btn-danger",
+  //     },
+  //     buttonsStyling: false,
+  //   });
 
-    swalWithBootstrapButtons
-      .fire({
-        title: "Are you want to delete " + licenceNo + " order?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel!",
-        reverseButtons: true,
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          swalWithBootstrapButtons.fire(
-            "Deleted!",
-            "Your driver " + licenceNo + " has been deleted.",
-            "success"
-          );
-          axios.delete(deleteDriverURL + licenceNo).then(() => {
-            this.componentDidMount();
-          });
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          swalWithBootstrapButtons.fire(
-            "Cancelled",
-            "Your " + licenceNo + " driver record is safe :)",
-            "error"
-          );
-        }
-      });
-  }
+  //   swalWithBootstrapButtons
+  //     .fire({
+  //       title: "Are you want to delete " + licenceNo + " order?",
+  //       text: "You won't be able to revert this!",
+  //       icon: "warning",
+  //       showCancelButton: true,
+  //       confirmButtonText: "Yes, delete it!",
+  //       cancelButtonText: "No, cancel!",
+  //       reverseButtons: true,
+  //     })
+  //     .then((result) => {
+  //       if (result.isConfirmed) {
+  //         swalWithBootstrapButtons.fire(
+  //           "Deleted!",
+  //           "Your driver " + licenceNo + " has been deleted.",
+  //           "success"
+  //         );
+  //         axios.delete(deleteDriverURL + licenceNo).then(() => {
+  //           this.componentDidMount();
+  //         });
+  //       } else if (result.dismiss === Swal.DismissReason.cancel) {
+  //         swalWithBootstrapButtons.fire(
+  //           "Cancelled",
+  //           "Your " + licenceNo + " driver record is safe :)",
+  //           "error"
+  //         );
+  //       }
+  //     });
+  // }
 
   render() {
-    const { drivers } = this.state;
+    const { ambulances } = this.state;
     return (
       <div>
         <SideNav />
@@ -112,31 +110,29 @@ export default class AmbulanceList extends Component {
                 <th className="ps-4">Vehicle Type</th>
                 <th className="ps-4"></th>
               </tr>
-              {drivers.map((driver) => {
+              {ambulances.map((ambulance) => {
                 return (
                   <tr
-                    key={driver.licenceNo}
+                    key={ambulance.vehicleNo}
                     className="orderListItems text-white"
                   >
-                    <td className="ps-4">{driver.licenceNo}</td>
-                    <td className="ps-4">{driver.name}</td>
-                    <td className="ps-4">{driver.address}</td>
-                    <td className="ps-4">{driver.vehicleNo}</td>
-                    <td className="ps-4">{driver.vehicleType}</td>
-                    <td className="ps-4">{driver.phoneNo}</td>
+                    <td className="ps-4">{ambulance.vehicleNo}</td>
+                    <td className="ps-4">{ambulance.vehicleOwnerName}</td>
+                    <td className="ps-4">{ambulance.availableLocation}</td>
+                    <td className="ps-4">{ambulance.vehicleType}</td>
                     <td className="ps-4">
                       <FontAwesomeIcon
                         size="2x"
                         icon={faEdit}
                         onClick={() => {
-                          localStorage.setItem("updateId", driver.licenceNo);
-                          window.location = "/updateDriver";
+                          localStorage.setItem("vehicleNo", ambulance.vehicleNo);
+                          window.location = "/ambulanceUpdate";
                         }}
                       />
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}
-                        onClick={(e) => this.delete(driver.licenceNo)}
+                        onClick={(e) => this.delete(ambulance.vehicleNo)}
                       />
                     </td>
                   </tr>

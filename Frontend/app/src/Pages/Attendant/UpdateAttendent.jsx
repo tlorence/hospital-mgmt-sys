@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./CreateAttendant.css";
-import { faRedo, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faRedo, faPlus, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
@@ -8,7 +8,7 @@ import axios from "axios";
 import { addinventoryURL } from "../../Services/endpoints";
 import Swal from "sweetalert2";
 
-export default class CreateAttendant extends Component {
+export default class UpdateAttendant extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -62,7 +62,7 @@ export default class CreateAttendant extends Component {
           <Header topic="Attendant Management" />
           <div className="CreateItem">
             <div className="Item-Create-Heading-Container">
-              <h3 className="Add-Item-Heading">Add Attendant</h3>
+              <h3 className="Add-Item-Heading">Update Attendant</h3>
             </div>
             <div className="Item-Create-Body-Container">
               <form onSubmit={this.handleSubmit}>
@@ -138,16 +138,9 @@ export default class CreateAttendant extends Component {
                 </div>
               </div>
                 <div className="ItemRow text-end">
-                  <button
-                    type="reset"
-                    className="Item-Button-Inventory-Reset"
-                    onClick={this.reset}
-                  >
-                    <FontAwesomeIcon icon={faRedo} /> Reset
-                  </button>
-                  <button type="submit" className="Item-Button-Inventory-Add">
-                    <FontAwesomeIcon icon={faPlus} /> Add Attendant
-                  </button>
+                <button type="submit" className="Delivery-Button-Update">
+                  <FontAwesomeIcon icon={faCheckCircle} /> Update Attendent
+                </button>
                 </div>
               </form>
             </div>

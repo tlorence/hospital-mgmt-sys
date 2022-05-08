@@ -75,7 +75,7 @@ export default class CreatePatient extends Component {
                       id="nic"
                       name="itemNo"
                       pattern="[A-Z,0-9]{6}"
-                      placeholder="ITM000"
+                      placeholder="nic"
                       required
                       onChange={this.handleChange}
                     />
@@ -89,7 +89,7 @@ export default class CreatePatient extends Component {
                     type="text"
                     id="firstName"
                     name="name"
-                    placeholder="John Doe"
+                    placeholder="FIrst Name"
                     required
                     onChange={this.handleChange}
                   />
@@ -103,7 +103,7 @@ export default class CreatePatient extends Component {
                     type="text"
                     id="lastName"
                     name="name"
-                    placeholder="John Doe"
+                    placeholder="Last Name"
                     required
                     onChange={this.handleChange}
                   />
@@ -117,7 +117,7 @@ export default class CreatePatient extends Component {
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="abc@abc.com"
+                    placeholder="Email"
                     required
                     onChange={this.handleChange}
                   />
@@ -131,7 +131,7 @@ export default class CreatePatient extends Component {
                     type="address"
                     id="address"
                     name="address"
-                    placeholder="12/3 1st st"
+                    placeholder="Address"
                     required
                     onChange={this.handleChange}
                   />

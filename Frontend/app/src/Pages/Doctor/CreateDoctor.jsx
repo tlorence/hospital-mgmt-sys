@@ -72,7 +72,7 @@ export default class CreateDoctor extends Component {
           <Header topic="Doctor Management" />
           <div className="CreateOrder">
             <div className="Order-Create-Heading-Container">
-              <h3 className="Add-Order-Heading">My Profile</h3>
+              <h3 className="Add-Order-Heading">Add Doctor</h3>
             </div>
             <div className="Order-Create-Body-Container">
               <form onSubmit={this.handleSubmit}>
@@ -81,11 +81,11 @@ export default class CreateDoctor extends Component {
                   <div className="ui fluid col-sm-9">
                     <input
                       className="form-control"
-                      readOnly
+                      
                       type="text"
                       id="itemId"
                       name="itemId"
-                      placeholder="Item Id"
+                      placeholder="Doctor ID"
                       required
                       onChange={this.handleChange}
                     />
@@ -98,11 +98,11 @@ export default class CreateDoctor extends Component {
                   <div className="col-sm-9">
                     <input
                       className="form-control"
-                      readOnly
-                      type="Number"
+                      
+                      type="text"
                       id="unitPrice"
                       name="unitPrice"
-                      placeholder="Unit Price"
+                      placeholder="Name"
                       required
                       onChange={this.handleChange}
                     />
@@ -113,10 +113,10 @@ export default class CreateDoctor extends Component {
                   <div className="ui fluid col-sm-9">
                     <input
                       className="form-control"
-                      readOnly
+                      
                       name="quantity"
                       type="number"
-                      placeholder="Quantity"
+                      placeholder="Specialization"
                       onChange={this.handleChange}
                     />
                   </div>
@@ -128,14 +128,12 @@ export default class CreateDoctor extends Component {
                   <div className="col-sm-9">
                     <input
                       className="form-control"
-                      type="tel"
-                      style={{ backgroundColor: "#9decec" }}
+                      type="text"
                       id="totalPrice"
                       name="totalPrice"
-                      placeholder="Total Price"
-                      readOnly
+                      placeholder="Mobile"
+                      
                       required
-                      value={this.state.unitPrice*this.state.quantity}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -145,11 +143,11 @@ export default class CreateDoctor extends Component {
                   <div className="ui fluid col-sm-9">
                     <input
                       className="form-control"
-                      readOnly
+                      
                       type="text"
                       id="date"
                       name="date"
-                      placeholder="Order Date"
+                      placeholder="Location"
                       required
                       onChange={this.handleChange}
                     />
@@ -157,7 +155,7 @@ export default class CreateDoctor extends Component {
                 </div>
                 
                 <div className="OrderRow text-end">
-                  {/* <button
+                  <button
                     type="reset"
                     className="Order-Button-Reset"
                     onClick={this.reset}
@@ -166,7 +164,7 @@ export default class CreateDoctor extends Component {
                   </button>
                   <button type="submit" className="Order-Button-Add">
                     <FontAwesomeIcon icon={faPlus} /> Add Order
-                  </button> */}
+                  </button>
                 </div>
               </form>
             </div>

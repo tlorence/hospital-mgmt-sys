@@ -6,7 +6,7 @@ import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { deleteInventoryURL, inventoryURL } from "../../Services/endpoints";
+import { attendentURL  } from "../../Services/endpoints";
 import { Redirect, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -14,63 +14,62 @@ export default class AttendantList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemNo: "",
-      itemCategory: "",
-      description: "",
-      unitPrice: 0,
-      inventoryNo: "",
-      quantity: 0,
-      items: [],
+      attendantId: "",
+      firstName: "",
+      lastName: "",
+      workingWard: "",
+      contactNo: "",
+      attendents: [],
       redirect: false,
     };
   }
 
   async componentDidMount() {
-    await axios.get(inventoryURL).then((result) => {
+    await axios.get(attendentURL).then((result) => {
       this.setState({
-        items: result.data,
+        attendents: result.data,
       });
     });
   }
 
-  delete(inventoryNo) {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger",
-      },
-      buttonsStyling: false,
-    });
+  // delete(inventoryNo) {
+  //   const swalWithBootstrapButtons = Swal.mixin({
+  //     customClass: {
+  //       confirmButton: "btn btn-success",
+  //       cancelButton: "btn btn-danger",
+  //     },
+  //     buttonsStyling: false,
+  //   });
 
-    swalWithBootstrapButtons
-      .fire({
-        title: "Are you want to delete " + inventoryNo + " item?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel!",
-        reverseButtons: true,
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          swalWithBootstrapButtons.fire(
-            "Deleted!",
-            "Your item " + inventoryNo + " has been deleted.",
-            "success"
-          );
-          axios.delete(deleteInventoryURL + inventoryNo).then(() => {
-            this.componentDidMount();
-          });
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          swalWithBootstrapButtons.fire(
-            "Cancelled",
-            "Your " + inventoryNo + " ineventory record is safe :)",
-            "error"
-          );
-        }
-      });
-  }
+  //   swalWithBootstrapButtons
+  //     .fire({
+  //       title: "Are you want to delete " + inventoryNo + " item?",
+  //       text: "You won't be able to revert this!",
+  //       icon: "warning",
+  //       showCancelButton: true,
+  //       confirmButtonText: "Yes, delete it!",
+  //       cancelButtonText: "No, cancel!",
+  //       reverseButtons: true,
+  //     })
+  //     .then((result) => {
+  //       if (result.isConfirmed) {
+  //         swalWithBootstrapButtons.fire(
+  //           "Deleted!",
+  //           "Your item " + inventoryNo + " has been deleted.",
+  //           "success"
+  //         );
+  //         axios.delete(deleteInventoryURL + inventoryNo).then(() => {
+  //           this.componentDidMount();
+  //         });
+  //       } else if (result.dismiss === Swal.DismissReason.cancel) {
+  //         swalWithBootstrapButtons.fire(
+  //           "Cancelled",
+  //           "Your " + inventoryNo + " ineventory record is safe :)",
+  //           "error"
+  //         );
+  //       }
+  //     });
+  // }
 
   setRedirect = () => {
     this.setState({
@@ -84,7 +83,7 @@ export default class AttendantList extends Component {
     }
   };
   render() {
-    const { items } = this.state;
+    const { attendents } = this.state;
     return (
       <div>
         <SideNav />
@@ -110,31 +109,31 @@ export default class AttendantList extends Component {
                 <th className="ps-4">Contact No</th>
                 <th className="ps-4"></th>
               </tr>
-              {items.map((item) => {
+              {attendents.map((attendent) => {
                 return (
                   <tr
-                    key={item.itemNo}
+                    key={attendent.attendantId}
                     className="InventoryListItems text-white"
                   >
-                    <td className="ps-4">{item.inventoryNo}</td>
-                    <td className="ps-4">{item.itemNo}</td>
-                    <td className="ps-4">{item.description}</td>
-                    <td className="ps-4">{item.itemCategory}</td>
-                    <td className="ps-4">{item.unitPrice}</td>
-                    <td className="ps-4">{item.quantity}</td>
+                    <td className="ps-4">{attendent.attendantId}</td>
+                    <td className="ps-4">{attendent.firstName}</td>
+                    <td className="ps-4">{attendent.lastName}</td>
+                    <td className="ps-4">{attendent.workingWard}</td>
+                    <td className="ps-4">{attendent.contactNo}</td>
+                    {/* <td className="ps-4">{item.quantity}</td> */}
                     <td className="ps-4">
                       <FontAwesomeIcon
                         size="2x"
                         icon={faEdit}
                         onClick={() => {
-                          localStorage.setItem("updateId", item.inventoryNo);
+                          localStorage.setItem("attendentId", attendent.attendantId);
                           window.location = "/updateItem";
                         }}
                       />
                       <FontAwesomeIcon
                         size="2x"
                         icon={faTrash}
-                        onClick={(e) => this.delete(item.inventoryNo)}
+                        onClick={(e) => this.delete(attendent.attendantId)}
                       />
                     </td>
                   </tr>

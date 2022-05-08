@@ -76,7 +76,7 @@ export default class CreateAppointment extends Component {
                     type="text"
                     id="orderNo"
                     name="orderNo"
-                    placeholder="Order No."
+                    placeholder="Appointment ID"
                     required
                     onChange={this.handleChange}
                   />
@@ -90,7 +90,7 @@ export default class CreateAppointment extends Component {
                     type="text"
                     id="description"
                     name="description"
-                    placeholder="Description"
+                    placeholder="Patient ID"
                     required
                     onChange={this.handleChange}
                   />
@@ -104,7 +104,7 @@ export default class CreateAppointment extends Component {
                     type="time"
                     id="address"
                     name="address"
-                    placeholder="Address"
+                    placeholder=""
                     required
                     onChange={this.handleChange}
                   />
@@ -118,7 +118,7 @@ export default class CreateAppointment extends Component {
                     type="time"
                     id="address"
                     name="address"
-                    placeholder="Address"
+                    placeholder=""
                     required
                     onChange={this.handleChange}
                   />

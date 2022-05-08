@@ -13,9 +13,9 @@ export const doctorURL = doctorControllerURL + "getAll";
 // export const updatedoctorURL = doctorControllerURL + "updatedoctorDetails";
 
 //Oder APIs
-// export const patientControllerURL = baseURL + "patient/";
-// export const patientURL = patientControllerURL + "getAll";
-// export const addPatientURL = patientControllerURL + "/addPatient";
+export const patientControllerURL = baseURL + "patient/";
+export const patientURL = patientControllerURL + "getAll";
+export const addPatientURL = patientControllerURL + "/addPatient";
 // export const deletePatient
 export const orderControllerURL = baseURL + "orders/";
 export const orderURL = orderControllerURL + "allOrders";
@@ -35,8 +35,8 @@ export const getDriverURLbyId = driverControllerURL + "getDriverById/";
 export const updateDriverURL = driverControllerURL + "updateDrivers";
 
 //Inventory APIs
-export const patientControllerURL = baseURL + "patient/";
-export const patientURL = patientControllerURL + "getAll";
+export const ambulanceControllerURL = baseURL + "ambulance/";
+export const ambulanceURL = ambulanceControllerURL + "getAll";
 export const inventoryControllerURL = baseURL + "inventory/";
 export const inventoryURL = inventoryControllerURL + "allInventory";
 export const addinventoryURL = inventoryControllerURL + "addItem";
@@ -47,6 +47,8 @@ export const deleteInventoryURL =
   inventoryControllerURL + "deleteInventoryById/";
 
 //Delivery APIs
+export const roomControllerURL = baseURL + "room/";
+export const roomURL = roomControllerURL + "getAll";
 export const deliveryControllerURL = baseURL + "delivery/";
 export const deliveryURL = deliveryControllerURL + "allDeliveries";
 export const addDeliveryURL = deliveryControllerURL + "addDelivery";
@@ -56,6 +58,8 @@ export const updateDeliveryURL =
   deliveryControllerURL + "updateDeliveryDetails";
 
 //User APIs
+export const attendantControllerURL = baseURL + "attendant/";
+export const attendentURL = attendantControllerURL + "getAll";
 export const userControllerURL = baseURL + "user/";
 export const addUserURL = userControllerURL + "addUser";
 export const userURL = userControllerURL + "allUsers";
