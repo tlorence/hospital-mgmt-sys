@@ -34,7 +34,7 @@ export default function SideNav() {
         </Link>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
-          <li>
+          {/* <li>
             <NavLink
               to="/dashboard"
               activeClassName="active"
@@ -47,8 +47,22 @@ export default function SideNav() {
                 <div className="col-8 text-start mt-2 ">Dashboard</div>
               </div>
             </NavLink>
+          </li> */}
+           <li className="nav-item">
+            <NavLink
+              to="/patientList"
+              activeClassName="active"
+              className="nav-link mt-2 mb-2 text-white"
+            >
+              <div className="row">
+                <div className="col-4">
+                  <FontAwesomeIcon icon={faUserInjured} size="2x" />
+                </div>
+                <div className="col-8 text-start mt-2">My Profile</div>
+              </div>
+            </NavLink>
           </li>
-          <li className="nav-item">
+          <li >
             <NavLink
               to="/doctorList"
               activeClassName="active"
@@ -58,24 +72,11 @@ export default function SideNav() {
                 <div className="col-4">
                   <FontAwesomeIcon icon={faHandHoldingMedical} size="2x" />
                 </div>
-                <div className="col-8 text-start mt-2">Doctor</div>
+                <div className="col-8 text-start mt-2">Doctor List </div>
               </div>
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/patientList"
-              activeClassName="active"
-              className="nav-link mt-2 mb-2 text-white"
-            >
-              <div className="row">
-                <div className="col-4">
-                  <FontAwesomeIcon icon={faCommentMedical} size="2x" />
-                </div>
-                <div className="col-8 text-start mt-2">Patient</div>
-              </div>
-            </NavLink>
-          </li>
+         
           <li>
             <NavLink
               to="/appointmentList"
@@ -90,7 +91,7 @@ export default function SideNav() {
               </div>
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink
               to="/ambulanceList"
               activeClassName="active"
@@ -126,12 +127,12 @@ export default function SideNav() {
             >
               <div className="row">
                 <div className="col-4">
-                  <FontAwesomeIcon icon={faUserInjured} size="2x" />
+                  <FontAwesomeIcon icon={faCommentMedical} size="2x" />
                 </div>
                 <div className="col-8 text-start mt-2">Attendant</div>
               </div>
             </NavLink>
-          </li>
+          </li> */}
         </ul>
         <hr />
       </div>

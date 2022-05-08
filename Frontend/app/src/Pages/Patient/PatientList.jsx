@@ -81,7 +81,7 @@ export default class PatientList extends Component {
 
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to="/createItem" />;
+      return <Redirect to="/createPatient" />;
     }
   };
   render() {
@@ -93,15 +93,110 @@ export default class PatientList extends Component {
           <SearchHeader topic="Patient Management" />
           <div className="ItemRow text-end">
             {this.renderRedirect()}
-            <button
+            {/* <button
               type="submit"
               className="Item-Button-Add"
               onClick={this.setRedirect}
             >
               <FontAwesomeIcon icon={faPlus} /> Add Patient
-            </button>
+            </button> */}
           </div>
-          <div className="row">
+          <div className="Item-Create-Heading-Container">
+              <h3 className="Add-Item-Heading">My Patient</h3>
+            </div>
+            <div className="Item-Create-Body-Container">
+              <form onSubmit={this.handleSubmit}>
+                <div className="mb-3 row">
+                  <label className="col-sm-3 col-form-label">NIC :</label>
+                  <div className="col-sm-9">
+                    <input
+                      className="form-control"
+                      readOnly
+                      type="text"
+                      id="nic"
+                      name="itemNo"
+                      pattern="[A-Z,0-9]{6}"
+                      placeholder="ITM000"
+                      required
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                </div>
+                <div className="mb-3 row">
+                <label className="col-sm-3 col-form-label">First Name :</label>
+                <div className="col-sm-9">
+                  <input
+                    className="form-control"
+                    readOnly
+                    type="text"
+                    id="firstName"
+                    name="name"
+                    placeholder="John Doe"
+                    required
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="mb-3 row">
+                <label className="col-sm-3 col-form-label">Last Name :</label>
+                <div className="col-sm-9">
+                  <input
+                    className="form-control"
+                    readOnly
+                    type="text"
+                    id="lastName"
+                    name="name"
+                    placeholder="John Doe"
+                    required
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+                <div className="mb-3 row">
+                <label className="col-sm-3 col-form-label">Email :</label>
+                <div className="col-sm-9">
+                  <input
+                    className="form-control"
+                    readOnly
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="abc@abc.com"
+                    required
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="mb-3 row">
+                <label className="col-sm-3 col-form-label">Address :</label>
+                <div className="col-sm-9">
+                  <input
+                    className="form-control"
+                    readOnly
+                    type="address"
+                    id="address"
+                    name="address"
+                    placeholder="12/3 1st st"
+                    required
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+                <div className="ItemRow text-end">
+                  {/* <button
+                    type="reset"
+                    className="Item-Button-Inventory-Reset"
+                    onClick={this.reset}
+                  >
+                    <FontAwesomeIcon icon={faRedo} /> Reset
+                  </button>
+                  <button type="submit" className="Item-Button-Inventory-Add">
+                    <FontAwesomeIcon icon={faPlus} /> Add Patient
+                  </button> */}
+                </div>
+              </form>
+            </div>
+          {/* <div className="row">
             <table className="table table-bordered  Inventory" id="myTable">
               <tr className="InventoryListItems">
                 <th className="ps-4">NIC</th>
@@ -143,6 +238,7 @@ export default class PatientList extends Component {
               })}
             </table>
           </div>
+        </div> */}
         </div>
       </div>
     );

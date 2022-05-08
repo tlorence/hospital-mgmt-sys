@@ -126,7 +126,7 @@ export default class CreateDoctor extends Component {
                     <input
                       className="form-control"
                       type="tel"
-                      style={{ backgroundColor: "#345454" }}
+                      style={{ backgroundColor: "#9decec" }}
                       id="totalPrice"
                       name="totalPrice"
                       placeholder="Total Price"

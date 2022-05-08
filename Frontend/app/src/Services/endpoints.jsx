@@ -13,6 +13,10 @@ export const doctorURL = doctorControllerURL + "getAll";
 // export const updatedoctorURL = doctorControllerURL + "updatedoctorDetails";
 
 //Oder APIs
+// export const patientControllerURL = baseURL + "patient/";
+// export const patientURL = patientControllerURL + "getAll";
+// export const addPatientURL = patientControllerURL + "/addPatient";
+// export const deletePatient
 export const orderControllerURL = baseURL + "orders/";
 export const orderURL = orderControllerURL + "allOrders";
 export const addOrderURL = orderControllerURL + "addOrder";

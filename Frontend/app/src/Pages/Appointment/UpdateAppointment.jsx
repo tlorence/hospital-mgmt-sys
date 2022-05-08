@@ -71,7 +71,7 @@ export default class UpdateAppointment extends Component {
         <div className="content-layer">
           <Header topic="Appointment Management" />
           <div className="Delivery-Update-Heading-Container">
-            <h3 className="Update-Delivery-Heading">Update Delivery</h3>
+            <h3 className="Update-Delivery-Heading">Update Appointment</h3>
           </div>
           <div className="Delivery-Update-Body-Container">
             <form onSubmit={this.handleSubmit}>
@@ -133,7 +133,7 @@ export default class UpdateAppointment extends Component {
               </div>
               <div className="DeliveryRow">
                 <button type="submit" className="Delivery-Button-Update">
-                  <FontAwesomeIcon icon={faCheckCircle} /> Update Delivery
+                  <FontAwesomeIcon icon={faCheckCircle} /> Update Appointment
                 </button>
               </div>
             </form>

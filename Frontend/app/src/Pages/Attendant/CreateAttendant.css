@@ -4,13 +4,13 @@
   padding: 8px;
   opacity: 85%;
   background-repeat: no-repeat;
-  background-color: #021010;
+  background-color: #ffffff;
 }
 
 .Item-Create-Heading-Container {
-  background-color: #012929;
+  background-color: #0f9a99;
   padding: 15px 10px 10px 10px;
-  border: solid 1px #012929;
+  border: solid 1px #0f9a99;
   border-radius: 20px;
   width: 50%;
   margin-left: 25%;
@@ -19,9 +19,9 @@
 }
 
 .Item-Create-Body-Container {
-  background-color: #012929;
+  background-color: #0f9a99;
   padding: 5px 10px 15px 10px;
-  border: solid 1px #012929;
+  border: solid 1px #0f9a99;
   padding: 20px;
   border-radius: 15px;
   width: 50%;
@@ -31,8 +31,8 @@
 .form-control {
   border-radius: 10px;
   width: relative;
-  background-color: #345454;
-  border-color: #9ce6b7;
+  background-color: #9decec;
+  border-color: #9decec;
   color: white;
   opacity: 0.9;
 }
@@ -54,7 +54,7 @@
   padding: 12px;
   border: soild 1px #0c6464;
   margin: 10px 0;
-  width: 22%;
+  width: 25%;
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;
@@ -72,11 +72,11 @@
 .Add-Item-Heading {
   text-align: center;
   font-weight: bold;
-  color: #9ce6b7;
+  color: #ffffff;
 }
 
 .col-form-label {
-  color: #9ce6b7;
+  color: #ffffff;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

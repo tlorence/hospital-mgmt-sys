@@ -5,13 +5,13 @@
   opacity: 85%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #021010;
+  background-color: #ffffff;
 }
 
 .Driver-Update-Heading-Container {
-  background-color: #012929;
+  background-color: #0f9a99;
   padding: 5px 10px 15px 10px;
-  border: solid 1px #012929;
+  border: solid 1px #0f9a99;
   padding: 20px;
   border-radius: 20px;
   width: 50%;
@@ -21,9 +21,9 @@
 }
 
 .Driver-Update-Body-Container {
-  background-color: #012929;
+  background-color: #0f9a99;
   padding: 5px 10px 15px 10px;
-  border: solid 1px #012929;
+  border: solid 1px #0f9a99;
   padding: 20px;
   border-radius: 15px;
   width: 50%;
@@ -33,6 +33,7 @@
 .form-control {
   border-radius: 10px;
   width: relative;
+  color:#ffffff;
 }
 
 .Driver-Button-Update {
@@ -59,5 +60,5 @@
 .Update-Driver-Heading {
   text-align: center;
   font-weight: bold;
-  color: #9ce6b7;
+  color: #ffffff;
 }

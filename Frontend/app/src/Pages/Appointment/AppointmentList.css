@@ -1,15 +1,15 @@
 .DeliveryListItems {
   border-radius: 5rem;
-  border-color: #021010;
-  background-color: #012929;
-  border-width: 10px;
+  border-color: #0f9a99;
+  background-color: #0f9a99;
+  border-width: 14px;
   height: 50px;
   font-size: 18px;
 }
 
 .DeliveryList {
   width: 100%;
-  color: #9ce6b7;
+  color: #ffffff;
   border-radius: 15px;
   font-size: 18px;
 }
@@ -45,7 +45,7 @@ th:last-child {
   padding: 12px;
   border: soild 1px #0c6464;
   margin: 10px 0;
-  width: 12%;
+  width: 16%;
   border-radius: 15px;
   cursor: pointer;
   font-size: 20px;

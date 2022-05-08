@@ -1,15 +1,15 @@
 .orderListItems {
   border-radius: 5rem;
-  border-color: #021010;
-  background-color: #012929;
-  border-width: 10px;
+  border-color: #0f9a99;
+  background-color: #0f9a99;
+  border-width: 14px;
   height: 50px;
   font-size: 18px;
 }
 
 .order {
   width: 100%;
-  color: #9ce6b7;
+  color: #ffffff;
   border-radius: 15px;
   font-size: 18px;
 }
