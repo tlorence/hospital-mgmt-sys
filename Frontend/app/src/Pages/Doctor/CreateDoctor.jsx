@@ -69,10 +69,10 @@ export default class CreateDoctor extends Component {
       <div>
         <SideNav />
         <div className="content-layer">
-          <Header topic="Add Doctor" />
+          <Header topic="Doctor Management" />
           <div className="CreateOrder">
             <div className="Order-Create-Heading-Container">
-              <h3 className="Add-Order-Heading">Add Doctor</h3>
+              <h3 className="Add-Order-Heading">My Profile</h3>
             </div>
             <div className="Order-Create-Body-Container">
               <form onSubmit={this.handleSubmit}>
@@ -81,6 +81,7 @@ export default class CreateDoctor extends Component {
                   <div className="ui fluid col-sm-9">
                     <input
                       className="form-control"
+                      readOnly
                       type="text"
                       id="itemId"
                       name="itemId"
@@ -97,6 +98,7 @@ export default class CreateDoctor extends Component {
                   <div className="col-sm-9">
                     <input
                       className="form-control"
+                      readOnly
                       type="Number"
                       id="unitPrice"
                       name="unitPrice"
@@ -111,6 +113,7 @@ export default class CreateDoctor extends Component {
                   <div className="ui fluid col-sm-9">
                     <input
                       className="form-control"
+                      readOnly
                       name="quantity"
                       type="number"
                       placeholder="Quantity"
@@ -130,7 +133,7 @@ export default class CreateDoctor extends Component {
                       id="totalPrice"
                       name="totalPrice"
                       placeholder="Total Price"
-                      readOnly="true"
+                      readOnly
                       required
                       value={this.state.unitPrice*this.state.quantity}
                       onChange={this.handleChange}
@@ -142,6 +145,7 @@ export default class CreateDoctor extends Component {
                   <div className="ui fluid col-sm-9">
                     <input
                       className="form-control"
+                      readOnly
                       type="text"
                       id="date"
                       name="date"
@@ -153,7 +157,7 @@ export default class CreateDoctor extends Component {
                 </div>
                 
                 <div className="OrderRow text-end">
-                  <button
+                  {/* <button
                     type="reset"
                     className="Order-Button-Reset"
                     onClick={this.reset}
@@ -162,7 +166,7 @@ export default class CreateDoctor extends Component {
                   </button>
                   <button type="submit" className="Order-Button-Add">
                     <FontAwesomeIcon icon={faPlus} /> Add Order
-                  </button>
+                  </button> */}
                 </div>
               </form>
             </div>

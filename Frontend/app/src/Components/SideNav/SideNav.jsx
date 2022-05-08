@@ -48,7 +48,21 @@ export default function SideNav() {
               </div>
             </NavLink>
           </li> */}
-           <li className="nav-item">
+          <li className="nav-item">
+            <NavLink
+              to="/createDoctor"
+              activeClassName="active"
+              className="nav-link mt-2 mb-2 text-white"
+            >
+              <div className="row">
+                <div className="col-4">
+                  <FontAwesomeIcon icon={faHandHoldingMedical} size="2x" />
+                </div>
+                <div className="col-8 text-start mt-2">My Details</div>
+              </div>
+            </NavLink>
+          </li>
+          {/* <li>
             <NavLink
               to="/patientList"
               activeClassName="active"
@@ -58,25 +72,10 @@ export default function SideNav() {
                 <div className="col-4">
                   <FontAwesomeIcon icon={faUserInjured} size="2x" />
                 </div>
-                <div className="col-8 text-start mt-2">My Profile</div>
+                <div className="col-8 text-start mt-2">Patient</div>
               </div>
             </NavLink>
-          </li>
-          <li >
-            <NavLink
-              to="/doctorList"
-              activeClassName="active"
-              className="nav-link mt-2 mb-2 text-white"
-            >
-              <div className="row">
-                <div className="col-4">
-                  <FontAwesomeIcon icon={faHandHoldingMedical} size="2x" />
-                </div>
-                <div className="col-8 text-start mt-2">Doctor List </div>
-              </div>
-            </NavLink>
-          </li>
-         
+          </li> */}
           <li>
             <NavLink
               to="/appointmentList"
