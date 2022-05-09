@@ -23,6 +23,7 @@ import AttendantList from "./Pages/Attendant/AttendantList";
 import CreateAttendant from "./Pages/Attendant/CreateAttendant";
 import UpdateRoom from "./Pages/Room/UpdateRoom";
 import UpdateAttendant from "./Pages/Attendant/UpdateAttendent";
+import UpdateDoctor from "./Pages/Doctor/UpdateDoctor";
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path="/createDoctor">
             <CreateDoctor />
+          </Route>
+          <Route path="/updateDoctor">
+            <UpdateDoctor/>
           </Route>
           <Route path="/createPatient">
             <CreatePatient />
