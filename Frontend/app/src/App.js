@@ -35,26 +35,9 @@ function App() {
           <Route path="/doctorList">
             <DoctorList />
           </Route>
-          <Route path="/dashboard">
-            <AdminDashboard />
+          <Route path="/createDoctor">
+            <CreateDoctor />
           </Route>
-          <Route path="/createAmbulance">
-            <AmbulanceCreate />
-          </Route>
-          <Route path="/updateRoom">
-            <UpdateRoom/>
-          </Route>
-          <Route path="/updateAmbulance">
-            <AmbulanceUpdate />
-          </Route>
-          <Route path="/ambulanceList">
-            <AmbulanceList />
-          </Route>
-          <Route path="/addUser">
-            <AddUser />
-          </Route>
-          <Route path="updateAttendent"></Route>
-          <UpdateAttendant/>
           <Route path="/createPatient">
             <CreatePatient />
           </Route>
@@ -64,12 +47,6 @@ function App() {
           <Route path="/updatePatient">
             <UpdatePatient />
           </Route>
-          <Route path="/createDoctor">
-            <CreateDoctor />
-          </Route>
-          {/* <Route path="/updateOrder">
-            <UpdateOrder />
-          </Route> */}
           <Route path="/createAppointment">
             <CreateAppointment />
           </Route>
@@ -79,11 +56,23 @@ function App() {
           <Route path="/updateAppointment">
             <UpdateAppointment />
           </Route>
+          <Route path="/createAmbulance">
+            <AmbulanceCreate />
+          </Route>
+          <Route path="/updateAmbulance">
+            <AmbulanceUpdate />
+          </Route>
+          <Route path="/ambulanceList">
+            <AmbulanceList />
+          </Route>
           <Route path="/roomList">
             <RoomList />
           </Route>
           <Route path="/createRoom">
             <CreateRoom />
+          </Route>
+          <Route path="/updateRoom">
+            <UpdateRoom/>
           </Route>
           <Route path="/attendantList">
             <AttendantList />
@@ -91,6 +80,15 @@ function App() {
           <Route path="/createAttendant">
             <CreateAttendant />
           </Route>
+          <Route path="/dashboard">
+            <AdminDashboard />
+          </Route>
+          <Route path="/updateAttendent">
+          <UpdateAttendant/>
+          </Route>          
+          <Route path="/addUser">
+            <AddUser />
+          </Route>             
         </Switch>
       </BrowserRouter>
     </div>

@@ -41,44 +41,44 @@ export default class DoctorList extends Component {
     }
   };
 
-  delete(orderId) {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger",
-      },
-      buttonsStyling: false,
-    });
+  // delete(orderId) {
+  //   const swalWithBootstrapButtons = Swal.mixin({
+  //     customClass: {
+  //       confirmButton: "btn btn-success",
+  //       cancelButton: "btn btn-danger",
+  //     },
+  //     buttonsStyling: false,
+  //   });
 
-    swalWithBootstrapButtons
-      .fire({
-        title: "Do you want to delete " + orderId + " order?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel!",
-        reverseButtons: true,
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          swalWithBootstrapButtons.fire(
-            "Deleted!",
-            "The order " + orderId + " has been deleted.",
-            "success"
-          );
-          axios.delete(deleteOrderURL + orderId).then(() => {
-            this.componentDidMount();
-          });
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          swalWithBootstrapButtons.fire(
-            "Cancelled",
-            "The " + orderId + " order record is safe :)",
-            "error"
-          );
-        }
-      });
-  }
+  //   swalWithBootstrapButtons
+  //     .fire({
+  //       title: "Do you want to delete " + orderId + " order?",
+  //       text: "You won't be able to revert this!",
+  //       icon: "warning",
+  //       showCancelButton: true,
+  //       confirmButtonText: "Yes, delete it!",
+  //       cancelButtonText: "No, cancel!",
+  //       reverseButtons: true,
+  //     })
+  //     .then((result) => {
+  //       if (result.isConfirmed) {
+  //         swalWithBootstrapButtons.fire(
+  //           "Deleted!",
+  //           "The order " + orderId + " has been deleted.",
+  //           "success"
+  //         );
+  //         axios.delete(deleteOrderURL + orderId).then(() => {
+  //           this.componentDidMount();
+  //         });
+  //       } else if (result.dismiss === Swal.DismissReason.cancel) {
+  //         swalWithBootstrapButtons.fire(
+  //           "Cancelled",
+  //           "The " + orderId + " order record is safe :)",
+  //           "error"
+  //         );
+  //       }
+  //     });
+  // }
 
   render() {
     const { doctors } = this.state;
