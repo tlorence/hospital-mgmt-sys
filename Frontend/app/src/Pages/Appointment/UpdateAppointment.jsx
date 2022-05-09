@@ -6,10 +6,7 @@ import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import Swal from "sweetalert2";
-import {
-  getDeliveryURLbyId,
-  updateDeliveryURL,
-} from "../../Services/endpoints";
+import {appointmentURL} from "../../Services/endpoints";
 
 export default class UpdateAppointment extends Component {
   constructor(props) {
@@ -31,7 +28,7 @@ export default class UpdateAppointment extends Component {
 
   async componentDidMount() {
     let id = localStorage.getItem("updateId");
-    await axios.get(getDeliveryURLbyId + id).then((result) => {
+    await axios.get(appointmentURL + id).then((result) => {
       this.setState({
         orderNo: result.data.orderNo,
         description: result.data.description,
@@ -54,7 +51,7 @@ export default class UpdateAppointment extends Component {
       customerPhoneNumber: this.state.customerPhoneNumber,
     };
 
-    axios.put(updateDeliveryURL, data).then(() => {
+    axios.put(appointmentURL, data).then(() => {
       Swal.fire({
         icon: "success",
         title: "Update Successful!!!",

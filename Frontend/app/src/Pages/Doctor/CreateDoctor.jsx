@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
 import axios from "axios";
-import { addOrderURL } from "../../Services/endpoints";
+import { doctorURL } from "../../Services/endpoints";
 import Swal from "sweetalert2";
 
 export default class CreateDoctor extends Component {
@@ -42,7 +42,7 @@ export default class CreateDoctor extends Component {
       status: this.state.status,
     };
 
-    const res = axios.post(addOrderURL, data).then(() => {
+    const res = axios.post(doctorURL, data).then(() => {
       Swal.fire({
         icon: "success",
         title: "Insert Successful!!!",

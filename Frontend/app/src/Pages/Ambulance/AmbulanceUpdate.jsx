@@ -6,7 +6,7 @@ import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { getDriverURLbyId, updateDriverURL } from "../../Services/endpoints";
+import { ambulanceURL  } from "../../Services/endpoints";
 
 export default class AmbulanceUpdate extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ export default class AmbulanceUpdate extends Component {
   }
   async componentDidMount() {
     let id = localStorage.getItem("updateId");
-    await axios.get(getDriverURLbyId + id).then((result) => {
+    await axios.get(ambulanceURL + id).then((result) => {
       this.setState({
         licenceNo: result.data.licenceNo,
         name: result.data.name,
@@ -44,7 +44,7 @@ export default class AmbulanceUpdate extends Component {
       vehicleType: this.state.vehicleType,
       phoneNo: this.state.phoneNo,
     };
-    axios.put(updateDriverURL, data).then(() => {
+    axios.put(ambulanceURL, data).then(() => {
       Swal.fire({
         icon: "success",
         title: "Update Successful!!!",

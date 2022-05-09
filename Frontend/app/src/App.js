@@ -1,7 +1,5 @@
 import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import "./App.css";
-import AdminDashboard from "./Pages/AdminDashboard/AdminDashboard";
-// import OrderList from "./Pages/OrderList/OrderList";
 import AmbulanceCreate from "./Pages/Ambulance/AmbulanceCreate";
 import AmbulanceUpdate from "./Pages/Ambulance/AmbulanceUpdate";
 import AddUser from "./Pages/User/AddUser";
@@ -10,8 +8,6 @@ import CreatePatient from "./Pages/Patient/CreatePatient";
 import UserLogin from "./Pages/User/UserLogin";
 import PatientList from "./Pages/Patient/PatientList";
 import UpdatePatient from "./Pages/Patient/UpdatePatient";
-// import CreateOrder from "./Pages/OrderList/CreateOrder";
-// import UpdateOrder from "./Pages/OrderList/UpdateOrder";
 import CreateAppointment from "./Pages/Appointment/CreateAppointment";
 import AppointmentList from "./Pages/Appointment/AppointmentList";
 import UpdateAppointment from "./Pages/Appointment/UpdateAppointment";
@@ -83,9 +79,6 @@ function App() {
           </Route>
           <Route path="/createAttendant">
             <CreateAttendant />
-          </Route>
-          <Route path="/dashboard">
-            <AdminDashboard />
           </Route>
           <Route path="/updateAttendent">
           <UpdateAttendant/>

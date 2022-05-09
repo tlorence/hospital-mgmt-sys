@@ -32,44 +32,7 @@ export default class AttendantList extends Component {
     });
   }
 
-  // delete(inventoryNo) {
-  //   const swalWithBootstrapButtons = Swal.mixin({
-  //     customClass: {
-  //       confirmButton: "btn btn-success",
-  //       cancelButton: "btn btn-danger",
-  //     },
-  //     buttonsStyling: false,
-  //   });
 
-  //   swalWithBootstrapButtons
-  //     .fire({
-  //       title: "Are you want to delete " + inventoryNo + " item?",
-  //       text: "You won't be able to revert this!",
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonText: "Yes, delete it!",
-  //       cancelButtonText: "No, cancel!",
-  //       reverseButtons: true,
-  //     })
-  //     .then((result) => {
-  //       if (result.isConfirmed) {
-  //         swalWithBootstrapButtons.fire(
-  //           "Deleted!",
-  //           "Your item " + inventoryNo + " has been deleted.",
-  //           "success"
-  //         );
-  //         axios.delete(deleteInventoryURL + inventoryNo).then(() => {
-  //           this.componentDidMount();
-  //         });
-  //       } else if (result.dismiss === Swal.DismissReason.cancel) {
-  //         swalWithBootstrapButtons.fire(
-  //           "Cancelled",
-  //           "Your " + inventoryNo + " ineventory record is safe :)",
-  //           "error"
-  //         );
-  //       }
-  //     });
-  // }
 
   setRedirect = () => {
     this.setState({

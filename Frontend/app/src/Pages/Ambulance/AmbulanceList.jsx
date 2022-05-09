@@ -13,7 +13,7 @@ import axios from "axios";
 import { ambulanceURL } from "../../Services/endpoints";
 import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
-import generatePDFDriver from "./DriverReport";
+
 
 export default class AmbulanceList extends Component {
   state = {
@@ -44,45 +44,6 @@ export default class AmbulanceList extends Component {
       return <Redirect to="/createAmbulance" />;
     }
   };
-
-  // delete(licenceNo) {
-  //   const swalWithBootstrapButtons = Swal.mixin({
-  //     customClass: {
-  //       confirmButton: "btn btn-success",
-  //       cancelButton: "btn btn-danger",
-  //     },
-  //     buttonsStyling: false,
-  //   });
-
-  //   swalWithBootstrapButtons
-  //     .fire({
-  //       title: "Are you want to delete " + licenceNo + " order?",
-  //       text: "You won't be able to revert this!",
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonText: "Yes, delete it!",
-  //       cancelButtonText: "No, cancel!",
-  //       reverseButtons: true,
-  //     })
-  //     .then((result) => {
-  //       if (result.isConfirmed) {
-  //         swalWithBootstrapButtons.fire(
-  //           "Deleted!",
-  //           "Your driver " + licenceNo + " has been deleted.",
-  //           "success"
-  //         );
-  //         axios.delete(deleteDriverURL + licenceNo).then(() => {
-  //           this.componentDidMount();
-  //         });
-  //       } else if (result.dismiss === Swal.DismissReason.cancel) {
-  //         swalWithBootstrapButtons.fire(
-  //           "Cancelled",
-  //           "Your " + licenceNo + " driver record is safe :)",
-  //           "error"
-  //         );
-  //       }
-  //     });
-  // }
 
   render() {
     const { ambulances } = this.state;

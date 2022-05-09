@@ -13,7 +13,6 @@ import axios from "axios";
 import { appointmentURL } from "../../Services/endpoints";
 import { Redirect } from "react-router";
 import Swal from "sweetalert2";
-// import generatePDF from "./DeliverReportGenaration";
 import { Link } from "react-router-dom";
 
 export default class AppointmentList extends Component {
@@ -34,44 +33,7 @@ export default class AppointmentList extends Component {
     });
   }
 
-  // delete(deliveryNo) {
-  //   const swalWithBootstrapButtons = Swal.mixin({
-  //     customClass: {
-  //       confirmButton: "btn btn-success",
-  //       cancelButton: "btn btn-danger",
-  //     },
-  //     buttonsStyling: false,
-  //   });
 
-  //   swalWithBootstrapButtons
-  //     .fire({
-  //       title: "Are you want to delete " + deliveryNo + " delivery?",
-  //       text: "You won't be able to revert this!",
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonText: "Yes, delete it!",
-  //       cancelButtonText: "No, cancel!",
-  //       reverseButtons: true,
-  //     })
-  //     .then((result) => {
-  //       if (result.isConfirmed) {
-  //         swalWithBootstrapButtons.fire(
-  //           "Deleted!",
-  //           "Your delivery " + deliveryNo + " has been deleted.",
-  //           "success"
-  //         );
-  //         axios.delete(deleteDeliveryURL + deliveryNo).then(() => {
-  //           this.componentDidMount();
-  //         });
-  //       } else if (result.dismiss === Swal.DismissReason.cancel) {
-  //         swalWithBootstrapButtons.fire(
-  //           "Cancelled",
-  //           "Your " + deliveryNo + " delivery record is safe :)",
-  //           "error"
-  //         );
-  //       }
-  //     });
-  // }
   setRedirect = () => {
     this.setState({
       redirect: true,

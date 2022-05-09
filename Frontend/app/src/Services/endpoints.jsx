@@ -7,55 +7,24 @@ export const baseURL = "http://localhost:9900/";
 //Oder APIs
 export const doctorControllerURL = baseURL + "doctor/";
 export const doctorURL = doctorControllerURL + "getAll";
-// export const adddoctorURL = doctorControllerURL + "adddoctor";
-// export const deletedoctorURL = doctorControllerURL + "deletedoctorById/";
-// export const getdoctorURLbyID = doctorControllerURL + "getdoctorById/";
-// export const updatedoctorURL = doctorControllerURL + "updatedoctorDetails";
 
 //Oder APIs
 export const patientControllerURL = baseURL + "patient/";
 export const patientURL = patientControllerURL + "getAll";
 export const addPatientURL = patientControllerURL + "/addPatient";
-// export const deletePatient
-export const orderControllerURL = baseURL + "orders/";
-export const orderURL = orderControllerURL + "allOrders";
-export const addOrderURL = orderControllerURL + "addOrder";
-export const deleteOrderURL = orderControllerURL + "deleteOrderById/";
-export const getOrderURLbyID = orderControllerURL + "getOrderById/";
-export const updateOrderURL = orderControllerURL + "updateOrderDetails";
+
 
 //Driver APIs
 export const appointmentController = baseURL + "appointment/"
 export const appointmentURL = appointmentController + "getAll";
-export const driverControllerURL = baseURL + "driver/";
-export const driverURL = driverControllerURL + "allDrivers";
-export const addDriverURL = driverControllerURL + "addDriver";
-export const deleteDriverURL = driverControllerURL + "deleteDriverById/";
-export const getDriverURLbyId = driverControllerURL + "getDriverById/";
-export const updateDriverURL = driverControllerURL + "updateDrivers";
 
 //Inventory APIs
 export const ambulanceControllerURL = baseURL + "ambulance/";
 export const ambulanceURL = ambulanceControllerURL + "getAll";
-export const inventoryControllerURL = baseURL + "inventory/";
-export const inventoryURL = inventoryControllerURL + "allInventory";
-export const addinventoryURL = inventoryControllerURL + "addItem";
-export const getInventoryURLbyID = inventoryControllerURL + "getInventoryById/";
-export const updateInventoryURL =
-  inventoryControllerURL + "updateInventoryDetails";
-export const deleteInventoryURL =
-  inventoryControllerURL + "deleteInventoryById/";
 
 //Delivery APIs
 export const roomControllerURL = baseURL + "room/";
 export const roomURL = roomControllerURL + "getAll";
-export const deliveryControllerURL = baseURL + "delivery/";
-export const deliveryURL = deliveryControllerURL + "allDeliveries";
-export const addDeliveryURL = deliveryControllerURL + "addDelivery";
-export const deleteDeliveryURL = deliveryControllerURL + "deleteDeliveryById/";
-export const getDeliveryURLbyId = deliveryControllerURL + "getDeliveryById/";
-export const updateDeliveryURL =
-  deliveryControllerURL + "updateDeliveryDetails";
 
 //User APIs
 export const attendantControllerURL = baseURL + "attendant/";

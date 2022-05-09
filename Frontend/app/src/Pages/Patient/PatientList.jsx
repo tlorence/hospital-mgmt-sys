@@ -9,7 +9,6 @@ import axios from "axios";
 import { patientURL } from "../../Services/endpoints";
 import { Redirect, Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import generatePDFItems from "./InventoryReport";
 
 export default class PatientList extends Component {
   constructor(props) {
@@ -33,44 +32,7 @@ export default class PatientList extends Component {
     });
   }
 
-  // delete(nic) {
-  //   const swalWithBootstrapButtons = Swal.mixin({
-  //     customClass: {
-  //       confirmButton: "btn btn-success",
-  //       cancelButton: "btn btn-danger",
-  //     },
-  //     buttonsStyling: false,
-  //   });
 
-  //   swalWithBootstrapButtons
-  //     .fire({
-  //       title: "Are you want to delete " + nic + " item?",
-  //       text: "You won't be able to revert this!",
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonText: "Yes, delete it!",
-  //       cancelButtonText: "No, cancel!",
-  //       reverseButtons: true,
-  //     })
-  //     .then((result) => {
-  //       if (result.isConfirmed) {
-  //         swalWithBootstrapButtons.fire(
-  //           "Deleted!",
-  //           "Your item " + nic + " has been deleted.",
-  //           "success"
-  //         );
-  //         axios.delete(deleteInventoryURL + inventoryNo).then(() => {
-  //           this.componentDidMount();
-  //         });
-  //       } else if (result.dismiss === Swal.DismissReason.cancel) {
-  //         swalWithBootstrapButtons.fire(
-  //           "Cancelled",
-  //           "Your " + inventoryNo + " ineventory record is safe :)",
-  //           "error"
-  //         );
-  //       }
-  //     });
-  // }
 
   setRedirect = () => {
     this.setState({
@@ -121,7 +83,6 @@ export default class PatientList extends Component {
                     <td className="ps-4">{patient.lastName}</td>
                     <td className="ps-4">{patient.email}</td>
                     <td className="ps-4">{patient.address}</td>
-                    {/* <td className="ps-4">{item.quantity}</td> */}
                     <td className="ps-4">
                       <FontAwesomeIcon
                         size="2x"

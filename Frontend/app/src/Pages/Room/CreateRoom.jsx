@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
 import axios from "axios";
-import { addinventoryURL } from "../../Services/endpoints";
+import { roomURL } from "../../Services/endpoints";
 import Swal from "sweetalert2";
 
 export default class CreateRoom extends Component {
@@ -35,7 +35,7 @@ export default class CreateRoom extends Component {
       quantity: this.state.quantity,
     };
 
-    const res = axios.post(addinventoryURL, data).then(() => {
+    const res = axios.post(roomURL, data).then(() => {
       Swal.fire({
         icon: "success",
         title: "Insert Successful",

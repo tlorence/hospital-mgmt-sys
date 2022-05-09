@@ -6,10 +6,7 @@ import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import Swal from "sweetalert2";
-import {
-  getInventoryURLbyID,
-  updateInventoryURL,
-} from "../../Services/endpoints";
+import {patientURL} from "../../Services/endpoints";
 
 export default class UpdatePatient extends Component {
   constructor(props) {
@@ -29,7 +26,7 @@ export default class UpdatePatient extends Component {
 
   async componentDidMount() {
     let invenID = localStorage.getItem("updateId");
-    await axios.get(getInventoryURLbyID + invenID).then((result) => {
+    await axios.get(patientURL + invenID).then((result) => {
       this.setState({
         inventoryNo: result.data.inventoryNo,
         itemNo: result.data.itemNo,
@@ -52,7 +49,7 @@ export default class UpdatePatient extends Component {
       unitPrice: this.state.unitPrice,
       quantity: this.state.quantity,
     };
-    axios.put(updateInventoryURL, data).then((res) => {
+    axios.put(patientURL, data).then((res) => {
       console.log(res.data);
       Swal.fire({
         icon: "success",

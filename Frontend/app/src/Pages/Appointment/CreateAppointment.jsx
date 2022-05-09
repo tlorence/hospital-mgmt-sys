@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
-import { addDeliveryURL } from "../../Services/endpoints";
+import { appointmentURL } from "../../Services/endpoints";
 import Swal from "sweetalert2";
 
 export default class CreateAppointment extends Component {
@@ -37,7 +37,7 @@ export default class CreateAppointment extends Component {
     };
     console.log("Data to send", data);
 
-    const res = axios.post(addDeliveryURL, data).then(() => {
+    const res = axios.post(appointmentURL, data).then(() => {
       Swal.fire({
         icon: "success",
         title: "Insert Successful!!",

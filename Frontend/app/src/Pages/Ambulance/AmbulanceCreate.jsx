@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
-import { addDriverURL } from "../../Services/endpoints";
+import { ambulanceURL } from "../../Services/endpoints";
 import Swal from "sweetalert2";
 
 export default class AmbulanceCreate extends Component {
@@ -35,7 +35,7 @@ export default class AmbulanceCreate extends Component {
       vehicleType: this.state.vehicleType,
       phoneNo: this.state.phoneNo,
     };
-    const res = axios.post(addDriverURL, data).then(() => {
+    const res = axios.post(ambulanceURL, data).then(() => {
       Swal.fire({
         icon: "success",
         title: "Insert Successful!!",
