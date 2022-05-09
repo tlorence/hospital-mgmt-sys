@@ -1,8 +1,6 @@
 package com.hardwaremanagement.app.controllers;
 
-import com.hardwaremanagement.app.models.Appointment;
 import com.hardwaremanagement.app.models.Attendant;
-import com.hardwaremanagement.app.repositories.AppointmentRepository;
 import com.hardwaremanagement.app.repositories.AttendantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

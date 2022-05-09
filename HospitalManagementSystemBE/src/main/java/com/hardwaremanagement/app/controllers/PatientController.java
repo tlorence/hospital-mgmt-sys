@@ -1,8 +1,6 @@
 package com.hardwaremanagement.app.controllers;
 
-import com.hardwaremanagement.app.models.Doctor;
 import com.hardwaremanagement.app.models.Patient;
-import com.hardwaremanagement.app.repositories.DoctorRepository;
 import com.hardwaremanagement.app.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
