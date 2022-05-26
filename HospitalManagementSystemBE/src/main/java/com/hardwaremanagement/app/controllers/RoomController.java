@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/room")
+@RequestMapping("/api/auth/room")
 public class RoomController {
 
 
@@ -39,8 +39,8 @@ public class RoomController {
         return "Updated Successfully";
     }
 
-    @DeleteMapping("delete")
-    public String deleteRoom(@PathVariable String id){
+    @DeleteMapping("delete/{id}")
+    public String deleteRoom(@PathVariable("id") String id){
         roomRepository.deleteById(id);
         return "Deleted Successfully";
     }

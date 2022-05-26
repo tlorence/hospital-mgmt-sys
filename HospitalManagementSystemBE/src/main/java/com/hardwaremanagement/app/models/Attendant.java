@@ -7,26 +7,26 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Attendant {
 
     @Id
-    private String attendantId;
+    private String id;
     private String firstName;
     private String lastName;
     private String workingWard;
     private String contactNo;
 
-    public Attendant(String attendantId, String firstName, String lastName, String workingWard, String contactNo) {
-        this.attendantId = attendantId;
+    public Attendant(String id, String firstName, String lastName, String workingWard, String contactNo) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.workingWard = workingWard;
         this.contactNo = contactNo;
     }
 
-    public String getAttendantId() {
-        return attendantId;
+    public String getId() {
+        return id;
     }
 
-    public void setAttendantId(String attendantId) {
-        this.attendantId = attendantId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFirstName() {
