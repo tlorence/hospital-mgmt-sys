@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/appointment")
+@RequestMapping("/api/auth/appointment")
 public class AppointmentController {
 
     @Autowired
@@ -38,8 +38,8 @@ public class AppointmentController {
         return "Updated Successfully";
     }
 
-    @DeleteMapping("delete")
-    public String deleteAppointment(@PathVariable String id){
+    @DeleteMapping("delete/{id}")
+    public String deleteAppointment(@PathVariable("id") String id){
         appointmentRepository.deleteById(id);
         return "Deleted Successfully";
     }

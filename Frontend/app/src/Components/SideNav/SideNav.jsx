@@ -12,12 +12,20 @@ import { faBookMedical } from "@fortawesome/free-solid-svg-icons";
 import { faCommentMedical } from "@fortawesome/free-solid-svg-icons";
 import { faAmbulance } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
+import { useState } from 'react';
+import { useEffect } from "react";
 
 export default function SideNav() {
+  const [role, setRole] = useState("");
+
+   useEffect(() =>{
+    setRole(localStorage.getItem("role"));
+  });
+
   return (
     <div>
       <div className="d-flex flex-column flex-shrink-0 p-3 sidebar">
-        <Link to="/dashboard">
+        <Link to="/dashboard" >
           <a
             href="/"
             className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
@@ -48,7 +56,12 @@ export default function SideNav() {
               </div>
             </NavLink>
           </li> */}
-          <li className="nav-item">
+
+          {/* Doctor nav Btn */}
+          
+          {role !== "ROLE_ADMIN" && role !== "ROLE_PATIENT" ? null
+
+          :<li className="nav-item">
             <NavLink
               to="/doctorList"
               activeClassName="active"
@@ -62,7 +75,14 @@ export default function SideNav() {
               </div>
             </NavLink>
           </li>
-          <li>
+          }
+
+          {/* Patient nav Btn */}
+
+          { role === "ROLE_PATIENT"
+            ? null
+            :
+            <li>
             <NavLink
               to="/patientList"
               activeClassName="active"
@@ -75,7 +95,10 @@ export default function SideNav() {
                 <div className="col-8 text-start mt-2">Patient</div>
               </div>
             </NavLink>
-          </li>
+          </li>}
+
+          {/* Appointment nav Btn */}
+
           <li>
             <NavLink
               to="/appointmentList"
@@ -90,7 +113,11 @@ export default function SideNav() {
               </div>
             </NavLink>
           </li>
-          <li>
+
+          {/* Ambulance nav Btn */}
+
+         { role !== "ROLE_ADMIN" && role !== "ROLE_PATIENT" ? null 
+         :<li>
             <NavLink
               to="/ambulanceList"
               activeClassName="active"
@@ -103,7 +130,10 @@ export default function SideNav() {
                 <div className="col-8 text-start mt-2">Ambulance</div>
               </div>
             </NavLink>
-          </li>
+          </li>}
+
+          {/* Room nav Btn */}
+
           <li>
             <NavLink
               to="/roomList"
@@ -118,7 +148,11 @@ export default function SideNav() {
               </div>
             </NavLink>
           </li>
-          <li>
+
+          {/* Attendant nav Btn */}
+      { role === "ROLE_PATIENT"
+            ? null
+            : <li>
             <NavLink
               to="/attendantList"
               activeClassName="active"
@@ -131,7 +165,7 @@ export default function SideNav() {
                 <div className="col-8 text-start mt-2">Attendant</div>
               </div>
             </NavLink>
-          </li>
+          </li>}
         </ul>
         <hr />
       </div>

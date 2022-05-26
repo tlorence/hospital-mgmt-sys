@@ -10,9 +10,11 @@ import {
 import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
-import { ambulanceURL } from "../../Services/endpoints";
+import { ambulanceURL, deleteambulanceURL } from "../../Services/endpoints";
+
 import { Link, Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
+
 
 
 export default class AmbulanceList extends Component {
@@ -24,7 +26,6 @@ export default class AmbulanceList extends Component {
     ambulances: [],
     redirect: false,
   };
-
   async componentDidMount() {
     await axios.get(ambulanceURL).then((result) => {
       this.setState({
@@ -32,6 +33,13 @@ export default class AmbulanceList extends Component {
       });
     });
   }
+
+   async delete(vehicleNo) {
+    await axios.delete(deleteambulanceURL+"/"+vehicleNo).then((res) => {
+      console.error("Response Data => "+res.data);
+      console.log(deleteambulanceURL+"/"+vehicleNo);
+    });
+  };
 
   setRedirect = () => {
     this.setState({
@@ -45,6 +53,9 @@ export default class AmbulanceList extends Component {
     }
   };
 
+
+ 
+
   render() {
     const { ambulances } = this.state;
     return (
@@ -54,13 +65,13 @@ export default class AmbulanceList extends Component {
           <SearchHeader topic="Ambulance Management" />
           <div className="DriverRow">
             {this.renderRedirect()}
-            <button
+            {localStorage.getItem("role")!=="ROLE_ADMIN"? null : <button
               type="submit"
               className="Driver-Button-List-Add"
               onClick={this.setRedirect}
             >
               <FontAwesomeIcon icon={faPlus} /> Add Ambulance
-            </button>
+            </button>}
           </div>
           <div className="row">
             <table className="table table-bordered  driverList" id="myTable">
@@ -87,7 +98,7 @@ export default class AmbulanceList extends Component {
                         icon={faEdit}
                         onClick={() => {
                           localStorage.setItem("vehicleNo", ambulance.vehicleNo);
-                          window.location = "/ambulanceUpdate";
+                          window.location = "/updateAmbulance";
                         }}
                       />
                       <FontAwesomeIcon

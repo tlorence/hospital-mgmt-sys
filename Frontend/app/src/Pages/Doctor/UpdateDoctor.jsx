@@ -5,22 +5,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
 import axios from "axios";
-import { doctorURL } from "../../Services/endpoints";
+import { updateDoctorURL } from "../../Services/endpoints";
+import { getdoctorIDURL } from "../../Services/endpoints";
 import Swal from "sweetalert2";
 
 export default class UpdateDoctor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      description: "",
-      itemId: "",
-      quantity: 0,
-      unitPrice: 0,
-      totalPrice: 0,
-      date: "",
-      customerName: "",
-      customerPhoneNo: "",
-      status: 0,
+    doctorId: "",
+    doctorName: "",
+    specialization: "",
+    mobileNo: "",
+    location: "",
     };
   }
 
@@ -28,39 +25,46 @@ export default class UpdateDoctor extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  async componentDidMount() {
+    let doctorId = localStorage.getItem("updateId");
+    await axios.get(getdoctorIDURL + doctorId).then((result) => {
+      this.setState({
+        doctorId: result.data.doctorId,
+        doctorName: result.data.doctorName,
+        specialization: result.data.specialization,
+        mobileNo: result.data.mobileNo,
+        location: result.data.location,
+      });
+    });
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
+    let doctorId = localStorage.getItem("updateId");
     const data = {
-      description: this.state.description,
-      itemId: this.state.itemId,
-      quantity: this.state.quantity,
-      unitPrice: this.state.unitPrice,
-      totalPrice: this.state.quantity * this.state.unitPrice,
-      date: this.state.date,
-      customerName: this.state.customerName,
-      customerPhoneNo: this.state.customerPhoneNo,
-      status: this.state.status,
+      doctorId: this.state.doctorId,
+      doctorName: this.state.doctorName,
+      specialization: this.state.specialization,
+      mobileNo: this.state.mobileNo,
+      location: this.state.location,
     };
-
-    const res = axios.post(doctorURL, data).then(() => {
+    axios.put(updateDoctorURL, data).then(() => {
       Swal.fire({
         icon: "success",
-        title: "Insert Successful!!!",
+        title: "Update Successful!!!",
       }).then(() => {
-        window.location = "/orderList";
+        window.location = "/doctorList";
       });
     });
   };
 
   reset() {
     const res = {
-      description: "",
-      itemId: "",
-      unitPrice: 0,
-      totalPrice: 0,
-      date: "",
-      customerName: "",
-      customerPhoneNo: "",
+    doctorId: "",
+    doctorName: "",
+    specialization: "",
+    mobileNo: "",
+    location: "",
     };
   }
 
@@ -83,8 +87,8 @@ export default class UpdateDoctor extends Component {
                       className="form-control"
                       
                       type="text"
-                      id="itemId"
-                      name="itemId"
+                      id="doctorId"
+                      name="doctorId"
                       placeholder="Doctor ID"
                       required
                       onChange={this.handleChange}
@@ -100,8 +104,8 @@ export default class UpdateDoctor extends Component {
                       className="form-control"
                       
                       type="text"
-                      id="unitPrice"
-                      name="unitPrice"
+                      id="doctorName"
+                      name="doctorName"
                       placeholder="Name"
                       required
                       onChange={this.handleChange}
@@ -114,8 +118,8 @@ export default class UpdateDoctor extends Component {
                     <input
                       className="form-control"
                       
-                      name="quantity"
-                      type="number"
+                      name="specialization"
+                      type="text"
                       placeholder="Specialization"
                       onChange={this.handleChange}
                     />
@@ -129,8 +133,8 @@ export default class UpdateDoctor extends Component {
                     <input
                       className="form-control"
                       type="text"
-                      id="totalPrice"
-                      name="totalPrice"
+                      id="mobileNo"
+                      name="mobileNo"
                       placeholder="Mobile"
                       
                       required
@@ -145,8 +149,8 @@ export default class UpdateDoctor extends Component {
                       className="form-control"
                       
                       type="text"
-                      id="date"
-                      name="date"
+                      id="location"
+                      name="location"
                       placeholder="Location"
                       required
                       onChange={this.handleChange}

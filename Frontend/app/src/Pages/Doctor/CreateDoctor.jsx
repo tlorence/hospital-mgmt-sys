@@ -5,22 +5,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
 import axios from "axios";
-import { doctorURL } from "../../Services/endpoints";
+import { adddoctorURL } from "../../Services/endpoints";
 import Swal from "sweetalert2";
 
 export default class CreateDoctor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      description: "",
-      itemId: "",
-      quantity: 0,
-      unitPrice: 0,
-      totalPrice: 0,
-      date: "",
-      customerName: "",
-      customerPhoneNo: "",
-      status: 0,
+    doctorId: "",
+    doctorName: "",
+    specialization: "",
+    mobileNo: "",
+    location: "",
     };
   }
 
@@ -31,36 +27,31 @@ export default class CreateDoctor extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      description: this.state.description,
-      itemId: this.state.itemId,
-      quantity: this.state.quantity,
-      unitPrice: this.state.unitPrice,
-      totalPrice: this.state.quantity * this.state.unitPrice,
-      date: this.state.date,
-      customerName: this.state.customerName,
-      customerPhoneNo: this.state.customerPhoneNo,
-      status: this.state.status,
+      doctorId: this.state.doctorId,
+      doctorName: this.state.doctorName,
+      specialization: this.state.specialization,
+      mobileNo: this.state.mobileNo,
+      location: this.state.location,
     };
 
-    const res = axios.post(doctorURL, data).then(() => {
+    const res = axios.post(adddoctorURL, data).then(() => {
       Swal.fire({
         icon: "success",
         title: "Insert Successful!!!",
       }).then(() => {
-        window.location = "/orderList";
+        window.location = "//doctorList";
       });
     });
   };
 
+
   reset() {
     const res = {
-      description: "",
-      itemId: "",
-      unitPrice: 0,
-      totalPrice: 0,
-      date: "",
-      customerName: "",
-      customerPhoneNo: "",
+      doctorId: "",
+      doctorName: "",
+      specialization: "",
+      mobileNo: "",
+      location: "",
     };
   }
 
@@ -83,8 +74,8 @@ export default class CreateDoctor extends Component {
                       className="form-control"
                       
                       type="text"
-                      id="itemId"
-                      name="itemId"
+                      id="doctorId"
+                      name="doctorId"
                       placeholder="Doctor ID"
                       required
                       onChange={this.handleChange}
@@ -100,8 +91,8 @@ export default class CreateDoctor extends Component {
                       className="form-control"
                       
                       type="text"
-                      id="unitPrice"
-                      name="unitPrice"
+                      id="doctorName"
+                      name="doctorName"
                       placeholder="Name"
                       required
                       onChange={this.handleChange}
@@ -114,8 +105,8 @@ export default class CreateDoctor extends Component {
                     <input
                       className="form-control"
                       
-                      name="quantity"
-                      type="number"
+                      name="specialization"
+                      type="text"
                       placeholder="Specialization"
                       onChange={this.handleChange}
                     />
@@ -129,8 +120,8 @@ export default class CreateDoctor extends Component {
                     <input
                       className="form-control"
                       type="text"
-                      id="totalPrice"
-                      name="totalPrice"
+                      id="mobileNo"
+                      name="mobileNo"
                       placeholder="Mobile"
                       
                       required
@@ -145,8 +136,8 @@ export default class CreateDoctor extends Component {
                       className="form-control"
                       
                       type="text"
-                      id="date"
-                      name="date"
+                      id="location"
+                      name="location"
                       placeholder="Location"
                       required
                       onChange={this.handleChange}
@@ -163,7 +154,7 @@ export default class CreateDoctor extends Component {
                     <FontAwesomeIcon icon={faRedo} /> Reset
                   </button>
                   <button type="submit" className="Order-Button-Add">
-                    <FontAwesomeIcon icon={faPlus} /> Add Order
+                    <FontAwesomeIcon icon={faPlus} /> Add Doctor
                   </button>
                 </div>
               </form>

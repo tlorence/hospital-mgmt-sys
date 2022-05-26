@@ -5,19 +5,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
-import { ambulanceURL } from "../../Services/endpoints";
+import { addambulanceURL } from "../../Services/endpoints";
 import Swal from "sweetalert2";
 
 export default class AmbulanceCreate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      licenceNo: "",
-      name: "",
-      address: "",
       vehicleNo: "",
-      vehicleType: "",
-      phoneNo: "",
+      vehicleOwnerName: "",
+      availableLocation: "",
+      vehicleType: ""
     };
   }
 
@@ -28,31 +26,27 @@ export default class AmbulanceCreate extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      licenceNo: this.state.licenceNo,
-      name: this.state.name,
-      address: this.state.address,
       vehicleNo: this.state.vehicleNo,
+      vehicleOwnerName: this.state.vehicleOwnerName,
+      availableLocation: this.state.availableLocation,
       vehicleType: this.state.vehicleType,
-      phoneNo: this.state.phoneNo,
     };
-    const res = axios.post(ambulanceURL, data).then(() => {
+    const res = axios.post(addambulanceURL, data).then(() => {
       Swal.fire({
         icon: "success",
         title: "Insert Successful!!",
       }).then(() => {
-        window.location = "/driverList";
+        window.location = "/ambulanceList";
       });
     });
   };
 
   reset() {
     const res = {
-      licenceNo: "",
-      name: "",
-      address: "",
       vehicleNo: "",
-      vehicleType: "",
-      phoneNo: "",
+      vehicleOwnerName: "",
+      availableLocation: "",
+      vehicleType: ""
     };
   }
 
@@ -73,9 +67,9 @@ export default class AmbulanceCreate extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="licenceNo"
-                    name="licenceNo"
-                    placeholder="License No"
+                    id="vehicleNo"
+                    name="vehicleNo"
+                    placeholder="Vehicle No"
                     required
                     onChange={this.handleChange}
                   />
@@ -87,9 +81,9 @@ export default class AmbulanceCreate extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Driver Name"
+                    id="vehicleOwnerName"
+                    name="vehicleOwnerName"
+                    placeholder="Vehicle Owner Name"
                     required
                     onChange={this.handleChange}
                   />
@@ -101,9 +95,9 @@ export default class AmbulanceCreate extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="address"
-                    name="address"
-                    placeholder="Driver Address"
+                    id="availableLocation"
+                    name="availableLocation"
+                    placeholder="Available Location"
                     required
                     onChange={this.handleChange}
                   />
@@ -115,9 +109,9 @@ export default class AmbulanceCreate extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="vehicleNo"
-                    name="vehicleNo"
-                    placeholder="Vehicle No"
+                    id="vehicleType"
+                    name="vehicleType"
+                    placeholder="Vehicle Type"
                     required
                     onChange={this.handleChange}
                   />

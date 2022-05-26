@@ -5,19 +5,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNav from "../../Components/SideNav/SideNav";
 import Header from "../../Components/Header/Header";
 import axios from "axios";
-import { attendentURL } from "../../Services/endpoints";
+import { addattendentURL } from "../../Services/endpoints";
 import Swal from "sweetalert2";
 
 export default class CreateAttendant extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemNo: "",
-      itemCategory: "",
-      description: "",
-      unitPrice: 0,
-      inventoryNo: "",
-      quantity: 0,
+      id: "",
+      firstName: "",
+      lastName: "",
+      workingWard: "",
+      contactNo: "",
     };
   }
 
@@ -28,30 +27,30 @@ export default class CreateAttendant extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      itemNo: this.state.itemNo,
-      itemCategory: this.state.itemCategory,
-      description: this.state.description,
-      unitPrice: this.state.unitPrice,
-      quantity: this.state.quantity,
+      id: this.state.id,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      workingWard: this.state.workingWard,
+      contactNo: this.state.contactNo,
     };
 
-    const res = axios.post(attendentURL, data).then(() => {
+    const res = axios.post(addattendentURL, data).then(() => {
       Swal.fire({
         icon: "success",
         title: "Insert Successful",
       }).then(() => {
-        window.location = "/patientList";
+        window.location = "/attendantList";
       });
     });
   };
 
   reset() {
     const res = {
-      itemNo: "",
-      itemCategory: "",
-      description: "",
-      unitPrice: 0,
-      quantity: 0,
+      id: "",
+      firstName: "",
+      lastName: "",
+      workingWard: "",
+      contactNo: "",
     };
   }
   render() {
@@ -72,10 +71,9 @@ export default class CreateAttendant extends Component {
                     <input
                       className="form-control"
                       type="text"
-                      id="nic"
-                      name="itemNo"
-                      pattern="[A-Z,0-9]{6}"
-                      placeholder="A01"
+                      id="id"
+                      name="id"
+                      placeholder="Attendent ID"
                       required
                       onChange={this.handleChange}
                     />
@@ -88,7 +86,7 @@ export default class CreateAttendant extends Component {
                     className="form-control"
                     type="text"
                     id="firstName"
-                    name="name"
+                    name="firstName"
                     placeholder="First Name"
                     required
                     onChange={this.handleChange}
@@ -102,7 +100,7 @@ export default class CreateAttendant extends Component {
                     className="form-control"
                     type="text"
                     id="lastName"
-                    name="name"
+                    name="lastName"
                     placeholder="Last Name"
                     required
                     onChange={this.handleChange}
@@ -115,8 +113,8 @@ export default class CreateAttendant extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="email"
-                    name="email"
+                    id="workingWard"
+                    name="workingWard"
                     placeholder="Working Ward"
                     required
                     onChange={this.handleChange}
@@ -129,8 +127,8 @@ export default class CreateAttendant extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="address"
-                    name="address"
+                    id="contactNo"
+                    name="contactNo"
                     placeholder="Contact No"
                     required
                     onChange={this.handleChange}

@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/ambulance")
+@RequestMapping("/api/auth/ambulance/")
 public class AmbulanceController {
 
     @Autowired
@@ -38,8 +38,8 @@ public class AmbulanceController {
         return "Updated Successfully";
     }
 
-    @DeleteMapping("delete")
-    public String deleteAmbulance(@PathVariable String id){
+    @DeleteMapping("delete/{id}")
+    public String deleteAmbulance(@PathVariable("id") String id){
         ambulanceRepository.deleteById(id);
         return "Deleted Successfully";
     }
