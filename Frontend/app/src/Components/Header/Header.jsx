@@ -27,7 +27,7 @@ export default function Header(props) {
                 height="32"
                 className="rounded-circle me-2"
               />
-              <strong>{localStorage.getItem("name") ?? "User"}</strong>
+              <strong>{localStorage.getItem("name").toString}</strong>
             </a>
             <ul
               className="dropdown-menu dropdown-menu-dark text-small shadow"

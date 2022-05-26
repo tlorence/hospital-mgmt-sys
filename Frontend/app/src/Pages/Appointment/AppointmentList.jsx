@@ -11,6 +11,7 @@ import SearchHeader from "../../Components/Header/SearchHeader";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import { appointmentURL } from "../../Services/endpoints";
+import { deleteapoinmentURL } from "../../Services/endpoints";
 import { Redirect } from "react-router";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
@@ -33,6 +34,12 @@ export default class AppointmentList extends Component {
     });
   }
 
+  async delete(appointmentId) {
+    await axios.delete(deleteapoinmentURL+"/"+appointmentId).then((res) => {
+      console.error("Response Data => "+res.data);
+      console.log(deleteapoinmentURL+"/"+appointmentId);
+    });
+  };
 
   setRedirect = () => {
     this.setState({

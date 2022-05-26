@@ -7,6 +7,7 @@ import SideNav from "../../Components/SideNav/SideNav";
 import { faDownload, faPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { attendentURL  } from "../../Services/endpoints";
+import { deleteattentdentURL } from "../../Services/endpoints";
 import { Redirect, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -14,7 +15,7 @@ export default class AttendantList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      attendantId: "",
+      id: "",
       firstName: "",
       lastName: "",
       workingWard: "",
@@ -31,6 +32,13 @@ export default class AttendantList extends Component {
       });
     });
   }
+
+  async delete(attendantId) {
+    await axios.delete(deleteattentdentURL+"/"+attendantId).then((res) => {
+      console.error("Response Data => "+res.data);
+      console.log(deleteattentdentURL+"/"+attendantId);
+    });
+  };
 
 
 
@@ -54,13 +62,13 @@ export default class AttendantList extends Component {
           <SearchHeader topic="Attendant Management" />
           <div className="ItemRow text-end">
             {this.renderRedirect()}
-            <button
+            {localStorage.getItem("role")!=="ROLE_ADMIN"? null :<button
               type="submit"
               className="Item-Button-Add"
               onClick={this.setRedirect}
             >
               <FontAwesomeIcon icon={faPlus} /> Add Attendant
-            </button>
+            </button>}
           </div>
           <div className="row">
             <table className="table table-bordered  Inventory" id="myTable">
@@ -78,7 +86,7 @@ export default class AttendantList extends Component {
                     key={attendent.attendantId}
                     className="InventoryListItems text-white"
                   >
-                    <td className="ps-4">{attendent.attendantId}</td>
+                    <td className="ps-4">{attendent.id}</td>
                     <td className="ps-4">{attendent.firstName}</td>
                     <td className="ps-4">{attendent.lastName}</td>
                     <td className="ps-4">{attendent.workingWard}</td>
@@ -90,7 +98,7 @@ export default class AttendantList extends Component {
                         icon={faEdit}
                         onClick={() => {
                           localStorage.setItem("attendentId", attendent.attendantId);
-                          window.location = "/updateItem";
+                          window.location = "/updateAttendent";
                         }}
                       />
                       <FontAwesomeIcon

@@ -5,19 +5,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
-import { appointmentURL } from "../../Services/endpoints";
+import { addapointmentURL } from "../../Services/endpoints";
 import Swal from "sweetalert2";
 
 export default class CreateAppointment extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      orderNo: "",
-      description: "",
-      address: "",
-      customerName: "",
-      customerPhoneNumber: 0,
-      status: 0,
+      appointmentId: "",
+      patientId: "",
+      startTime: "",
+      endTimel: ""
     };
   }
 
@@ -28,33 +26,29 @@ export default class CreateAppointment extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      orderNo: this.state.orderNo,
-      description: this.state.description,
-      address: this.state.address,
-      customerName: this.state.customerName,
-      customerPhoneNumber: this.state.customerPhoneNumber,
-      status: this.state.status,
+      appointmentId: this.state.appointmentId,
+      patientId: this.state.patientId,
+      startTime: this.state.startTime,
+      endTimel: this.state.endTimel,
     };
     console.log("Data to send", data);
 
-    const res = axios.post(appointmentURL, data).then(() => {
+    const res = axios.post(addapointmentURL, data).then(() => {
       Swal.fire({
         icon: "success",
         title: "Insert Successful!!",
       }).then(() => {
-        window.location = "/deliveryList";
+        window.location = "/appointmentList";
       });
     });
   };
 
   reset() {
     const res = {
-      orderNo: "",
-      description: "",
-      address: "",
-      customerName: "",
-      customerPhoneNumber: "",
-      status: "",
+      appointmentId: "",
+      patientId: "",
+      startTime: "",
+      endTimel: "",
     };
   }
   render() {
@@ -74,8 +68,8 @@ export default class CreateAppointment extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="orderNo"
-                    name="orderNo"
+                    id="appointmentId"
+                    name="appointmentId"
                     placeholder="Appointment ID"
                     required
                     onChange={this.handleChange}
@@ -88,8 +82,8 @@ export default class CreateAppointment extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="description"
-                    name="description"
+                    id="patientId"
+                    name="patientId"
                     placeholder="Patient ID"
                     required
                     onChange={this.handleChange}
@@ -102,8 +96,8 @@ export default class CreateAppointment extends Component {
                   <input
                     className="form-control"
                     type="time"
-                    id="address"
-                    name="address"
+                    id="startTime"
+                    name="startTime"
                     placeholder=""
                     required
                     onChange={this.handleChange}
@@ -116,8 +110,8 @@ export default class CreateAppointment extends Component {
                   <input
                     className="form-control"
                     type="time"
-                    id="address"
-                    name="address"
+                    id="endTimel"
+                    name="endTimel"
                     placeholder=""
                     required
                     onChange={this.handleChange}

@@ -6,19 +6,17 @@ import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import Swal from "sweetalert2";
-import {appointmentURL} from "../../Services/endpoints";
+import {updateapointmentURL} from "../../Services/endpoints";
+import {getapointmentIDURL} from "../../Services/endpoints";
 
 export default class UpdateAppointment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      deliveryNo: 0,
-      orderNo: "",
-      description: "",
-      address: "",
-      customerName: "",
-      customerPhoneNumber: "",
-      delivery: [],
+      appointmentId: "",
+      patientId: "",
+      startTime: "",
+      endTimel: ""
     };
   }
 
@@ -27,36 +25,33 @@ export default class UpdateAppointment extends Component {
   };
 
   async componentDidMount() {
-    let id = localStorage.getItem("updateId");
-    await axios.get(appointmentURL + id).then((result) => {
+    let appointmentId = localStorage.getItem("updateId");
+    await axios.get(getapointmentIDURL + appointmentId).then((result) => {
       this.setState({
-        orderNo: result.data.orderNo,
-        description: result.data.description,
-        address: result.data.address,
-        customerName: result.data.customerName,
-        customerPhoneNumber: result.data.customerPhoneNumber,
+        appointmentId: result.data.appointmentId,
+        patientId: result.data.patientId,
+        startTime: result.data.startTime,
+        endTimel: result.data.endTimel,
       });
     });
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let id = localStorage.getItem("updateId");
+    let appointmentId = localStorage.getItem("updateId");
     const data = {
-      deliveryNo: id,
-      orderNo: this.state.orderNo,
-      description: this.state.description,
-      address: this.state.address,
-      customerName: this.state.customerName,
-      customerPhoneNumber: this.state.customerPhoneNumber,
+      appointmentId: this.state.appointmentId,
+      patientId: this.state.patientId,
+      startTime: this.state.startTime,
+      endTimel: this.state.endTimel,
     };
 
-    axios.put(appointmentURL, data).then(() => {
+    axios.put(updateapointmentURL, data).then(() => {
       Swal.fire({
         icon: "success",
         title: "Update Successful!!!",
       }).then(() => {
-        window.location = "/deliveryList";
+        window.location = "/appointmentList";
       });
     });
   };
@@ -78,9 +73,9 @@ export default class UpdateAppointment extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="orderNo"
-                    name="orderNo"
-                    placeholder="Order No."
+                    id="appointmentId"
+                    name="appointmentId"
+                    placeholder="AppointmentId"
                     required
                     onChange={this.handleChange}
                   />
@@ -92,9 +87,9 @@ export default class UpdateAppointment extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="description"
-                    name="description"
-                    placeholder="Description"
+                    id="patientId"
+                    name="patientId"
+                    placeholder="PatientId"
                     required
                     onChange={this.handleChange}
                   />
@@ -106,9 +101,9 @@ export default class UpdateAppointment extends Component {
                   <input
                     className="form-control"
                     type="time"
-                    id="address"
-                    name="address"
-                    placeholder="Address"
+                    id="startTime"
+                    name="startTime"
+                    placeholder="Start Time"
                     required
                     onChange={this.handleChange}
                   />
@@ -120,9 +115,9 @@ export default class UpdateAppointment extends Component {
                   <input
                     className="form-control"
                     type="time"
-                    id="address"
-                    name="address"
-                    placeholder="Address"
+                    id="endTimel"
+                    name="endTimel"
+                    placeholder="End Time"
                     required
                     onChange={this.handleChange}
                   />

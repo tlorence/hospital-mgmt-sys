@@ -9,8 +9,10 @@ import axios from "axios";
 import { doctorURL } from "../../Services/endpoints";
 import { Redirect } from "react-router-dom";
 import Swal from "sweetalert2";
-import { deleteOrderURL } from "../../Services/endpoints";
+import { deletedoctorURL } from "../../Services/endpoints";
 export default class DoctorList extends Component {
+
+
   state = {
     doctorId: "",
     doctorName: "",
@@ -19,15 +21,31 @@ export default class DoctorList extends Component {
     location: "",
     doctors: [],
     redirect: false,
+    role: ""
   };
 
+
   async componentDidMount() {
+
+    // this.setState({
+    //   role: localStorage.setItem("role")
+    // });
+
     await axios.get(doctorURL).then((result) => {
       this.setState({
         doctors: result.data,
+        
       });
     });
+
   }
+
+  async delete(doctorId) {
+    await axios.delete(deletedoctorURL+"/"+doctorId).then((res) => {
+      console.error("Response Data => "+res.data);
+      console.log(deletedoctorURL+"/"+doctorId);
+    });
+  };
 
   setRedirect = () => {
     this.setState({
@@ -52,13 +70,14 @@ export default class DoctorList extends Component {
           <SearchHeader topic="Doctor Management" />
           <div className="OrderRow text-end">
             {this.renderRedirect()}
+            {localStorage.getItem("role")!=="ROLE_ADMIN"? null :
             <button
               type="submit"
               className="Order-Button-Add"
               onClick={this.setRedirect}
             >
               <FontAwesomeIcon icon={faPlus} /> Add Doctor
-            </button>
+            </button>}
           </div>
           <div className="row">
             <table class="table table-bordered  order" id="myTable">

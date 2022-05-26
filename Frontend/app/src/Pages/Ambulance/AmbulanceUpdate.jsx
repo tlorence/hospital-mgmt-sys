@@ -6,30 +6,27 @@ import Header from "../../Components/Header/Header";
 import SideNav from "../../Components/SideNav/SideNav";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { ambulanceURL  } from "../../Services/endpoints";
+import { getambulanceIDURL  } from "../../Services/endpoints";
+import { updateambulanceURL } from "../../Services/endpoints";
 
 export default class AmbulanceUpdate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      licenceNo: "",
-      name: "",
-      address: "",
       vehicleNo: "",
-      vehicleType: "",
-      phoneNo: "",
+      vehicleOwnerName: "",
+      availableLocation: "",
+      vehicleType: ""
     };
   }
   async componentDidMount() {
     let id = localStorage.getItem("updateId");
-    await axios.get(ambulanceURL + id).then((result) => {
+    await axios.get(getambulanceIDURL + id).then((result) => {
       this.setState({
-        licenceNo: result.data.licenceNo,
-        name: result.data.name,
-        address: result.data.address,
         vehicleNo: result.data.vehicleNo,
+        vehicleOwnerName: result.data.vehicleOwnerName,
+        availableLocation: result.data.availableLocation,
         vehicleType: result.data.vehicleType,
-        phoneNo: result.data.phoneNo,
       });
     });
   }
@@ -37,19 +34,17 @@ export default class AmbulanceUpdate extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      licenceNo: this.state.licenceNo,
-      name: this.state.name,
-      address: this.state.address,
       vehicleNo: this.state.vehicleNo,
+      vehicleOwnerName: this.state.vehicleOwnerName,
+      availableLocation: this.state.availableLocation,
       vehicleType: this.state.vehicleType,
-      phoneNo: this.state.phoneNo,
     };
-    axios.put(ambulanceURL, data).then(() => {
+    axios.put(updateambulanceURL, data).then(() => {
       Swal.fire({
         icon: "success",
         title: "Update Successful!!!",
       }).then(() => {
-        window.location = "/driverList";
+        window.location = "/ambulanceList";
       });
     });
   };
@@ -75,9 +70,9 @@ export default class AmbulanceUpdate extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="licenceNo"
-                    name="licenceNo"
-                    placeholder="License No"
+                    id="vehicleNo"
+                    name="vehicleNo"
+                    placeholder="vehicle No"
                     required
                     onChange={this.handleChange}
                   />
@@ -89,9 +84,9 @@ export default class AmbulanceUpdate extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Driver Name"
+                    id="vehicleOwnerName"
+                    name="vehicleOwnerName"
+                    placeholder="Vehicle Name"
                     required
                     onChange={this.handleChange}
                   />
@@ -103,9 +98,9 @@ export default class AmbulanceUpdate extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="address"
-                    name="address"
-                    placeholder="Driver Address"
+                    id="availableLocation"
+                    name="availableLocation"
+                    placeholder="available Location"
                     required
                     onChange={this.handleChange}
                   />
@@ -117,9 +112,9 @@ export default class AmbulanceUpdate extends Component {
                   <input
                     className="form-control"
                     type="text"
-                    id="vehicleNo"
-                    name="vehicleNo"
-                    placeholder="Vehicle No"
+                    id="vehicleType"
+                    name="vehicleType"
+                    placeholder="Vehicle Type"
                     required
                     onChange={this.handleChange}
                   />
